@@ -1,6 +1,10 @@
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/Header';
 const App = () => {
   return (
-      <div>Ola Devs!</div>
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
     );
 }
 export default App;
