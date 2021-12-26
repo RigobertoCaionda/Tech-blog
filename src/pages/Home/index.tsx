@@ -2,14 +2,14 @@ import * as C from '../../app.styled';
 import * as D from './styled';
 import { Link } from 'react-router-dom';
 import NewsItem from '../../components/News';
-import Me_Info from '../../components/Me.Info';
+import ME_INFO from '../../components/Me.Info';
 
 const Page = () => {
 	return (
 			<C.PageContainer>
 				<D.Container>
 					<div className="en"><Link to="/english">View in English</Link></div>
-					<Me_Info />
+					<ME_INFO />
 					<div className="last-updates">
 						<h3>Últimas do blog</h3>
 						<div className="last-updates-area">
