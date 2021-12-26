@@ -7,8 +7,9 @@ export const Container = styled.a`
 	padding: 25px;
 	text-decoration: none;
 	border-radius: 3px;
+	transition: box-shadow 0.3s linear;
 	&: hover {
-		border: 1px solid #187888;
+		box-shadow: 0px 1px 3px #187888;
 	}
 	.subject {
 		color: #1b1b1b;
