@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Add from './pages/Add';
 import MyAccount from './pages/MyAccount';
+import BlogItemPage from './pages/BlogItemPage';
 import PrivateRoute from './components/PrivateRoute';
 
 const Page =  () => {
@@ -13,6 +14,7 @@ const Page =  () => {
 			<Routes>
 				<Route path="/" element={ <Home /> }/>	
 				<Route path="/blog" element={ <Blog /> }/>
+				<Route path="/blog/:id" element={ <BlogItemPage /> } />
 				<Route path="/about" element={ <Hi /> }/>	
 				<Route path="/signin" element={ <SignIn /> }/>
 				<Route path="/signup" element={ <SignUp /> }/>
