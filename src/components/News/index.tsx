@@ -1,14 +1,16 @@
 import * as C from './styled';
 import { NewListItem } from '../../types/NewListItem';
+import { dateFormatter } from '../../helpers/dateHelpers';
 type Props = {
 	item: NewListItem
 }
 
 const Page = ({item}: Props) => {
+	
 	return (
 		<C.Container href={`/blog/${item.id}`}>
 			<div className="date-created">
-				<small>28 mai, 2021. Leitura de 7 min</small>
+				<small>{dateFormatter(item.dateCreated)}</small>
 			</div>
 
 			<div className="title">
