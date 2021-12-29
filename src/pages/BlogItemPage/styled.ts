@@ -3,6 +3,40 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	margin-top: 80px;
 
+	.prev-and-next {
+		margin-bottom: 30px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 15px;
+
+		.prev, .next {
+			color: #757575;
+			font-size: 1.3rem;
+		}
+
+		a {
+			box-shadow: 0px 1px 3px hsl(0deg 0% 7% / 12%);
+			padding: 30px;
+			text-decoration: none;
+			border-radius: 3px;
+			transition: box-shadow 0.3s linear;
+
+			small {
+				color: #757575;
+			}
+
+			h3 {
+				font-weight: 400;
+				margin-top: 15px;
+				color: #1b1b1b;
+			}
+		}
+
+		a: hover {
+		box-shadow: 0px 1px 3px #187888;
+	}
+	}
+
 	.dateCreated {
 		margin-bottom: 30px;
 		small {

@@ -52,6 +52,23 @@ const Page = () => {
 					}
 				</div>
 
+			{/*Isto abaixo sera transformado num componente*/}
+
+				<div className="prev-and-next">
+					<div className="prev">Anterior</div>
+					<div className="next">Próximo</div>
+					<Link to="/prev">
+						<small>30 de abril de 2021</small>
+						<h3>Collapse em 5 minutos sem Javascript</h3>
+					</Link>
+
+					<Link to="/next">
+						<small>30 de abril de 2021</small>
+						<h3>React, Angular ou Vue - Qual Framework Javascript escolheria hoje?</h3>
+					</Link>
+				</div>
+			{/*Isto abaixo sera transformado num componente*/}
+
 				<div className="comments-area">
 					<textarea placeholder="Comente este poste"></textarea>
 					<button>comentar</button>
@@ -72,6 +89,7 @@ const Page = () => {
 						<div className="links">
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
+							<Link to="/delete-comment">Eliminar</Link>
 						</div>
 					</div>
 					{/*O segundo wrapper representa o segundo comentario*/}
@@ -87,6 +105,7 @@ const Page = () => {
 						<div className="links">
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
+							<Link to="/delete-comment">Eliminar</Link>
 						</div>
 					</div>
 				{/*Termino do segundo comentario*/}
@@ -104,6 +123,7 @@ const Page = () => {
 						<div className="links">
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
+							<Link to="/delete-comment">Eliminar</Link>
 						</div>
 					</div>
 			{/*termino do terceiro comentario*/}

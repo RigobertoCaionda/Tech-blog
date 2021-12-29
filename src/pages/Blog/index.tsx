@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PageContainer } from '../../app.styled';
 import * as C from './styled';
 import SearchInput from '../../components/SearchInput';
@@ -96,10 +97,11 @@ const Page = () => {
 								<NewsItem key={k} item={i} />
 							))
 					}
+
 					<div className="pagination">
-						<div>Anterior</div>
-						<div>1 de 6</div>
-						<div>Proxima</div>
+						<div className="prev"><Link to="/prev">Anterior</Link></div>
+						<div className="current">1 de 6</div>
+						<div className="next"><Link to="/next">Proxima</Link></div>
 					</div>
 				</C.Container>
 			</PageContainer>

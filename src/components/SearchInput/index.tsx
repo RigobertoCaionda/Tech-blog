@@ -1,10 +1,12 @@
 import * as C from './styled';
-
+import SearchIcon from '@material-ui/icons/Search';
 const Page = () => {
 	return (
 			<C.Container>
 				<C.InputArea type="text" placeholder="Pesquisar..." />
-				<div style={{width: '30px', height: '30px', backgroundColor: '#000', marginLeft: -40}}>OI</div>
+				<div className="search-icon">
+					<SearchIcon style={ { color: '#757575', fontSize: '1.7rem' } } />
+				</div>
 			</C.Container>
 		);
 }
