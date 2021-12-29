@@ -10,14 +10,20 @@ export const FooterArea = styled.footer`
 	border-top: 1px solid #f1f1f1;
 	z-index: 5;
 	background-color: #fff;
-	.github {
+	.social-media {
 		width: 40px;
 		height: 40px;
-		border-radius: 50%;
-		background-color: #1b1b1b;
 		margin-right: 25px;
+
 		&: last-child {
 			margin-right: 0;
 		}
+
+		&: hover {
+			svg.MuiSvgIcon-root {
+				fill: #187888;
+			}
+		}
+
 	}
 `;
