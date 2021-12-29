@@ -4,6 +4,9 @@ import * as C from './styled';
 import { PageContainer } from '../../app.styled';
 import { NewListItem } from '../../types/NewListItem';
 import { dateFormatter } from '../../helpers/dateHelpers';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import LinkIcon from '@material-ui/icons/Link';
 
 const Page = () => {
 	const [blogItem, setBlogItem] = useState<NewListItem>({
@@ -19,7 +22,7 @@ const Page = () => {
 		<PageContainer>
 			<C.Container>
 				<div className="goBack">
-					<Link to="/blog">Voltar</Link>
+					<Link to="/blog"><ArrowBackIcon style={{ fontSize: '0.9rem' }}/> Voltar</Link>
 				</div>
 
 				<div className="dateCreated">
@@ -35,6 +38,7 @@ const Page = () => {
 				</div>
 
 				<div className="subject">
+					<LinkIcon style={{ fontSize: '1rem' }}/>  
 					{blogItem.subject.length > 0 &&
 						blogItem.subject.map((item, key) => (
 								<Link to={`/query=${item}`} key={key}>
@@ -55,8 +59,8 @@ const Page = () => {
 			{/*Isto abaixo sera transformado num componente*/}
 
 				<div className="prev-and-next">
-					<div className="prev">Anterior</div>
-					<div className="next">Próximo</div>
+					<div className="prev"><ArrowBackIcon style={{ fontSize: '1.1rem' }} />Anterior</div>
+					<div className="next"><ArrowForwardIcon style={{ fontSize: '1.1rem' }} />Próximo</div>
 					<Link to="/prev">
 						<small>30 de abril de 2021</small>
 						<h3>Collapse em 5 minutos sem Javascript</h3>

@@ -131,6 +131,8 @@ export const Container = styled.div`
 	}
 
 	.subject {
+		display: flex;
+		align-items: center;
 		margin-bottom: 30px;
 		a {
 			color: #1b1b1b;
