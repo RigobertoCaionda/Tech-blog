@@ -104,6 +104,7 @@ export const Container = styled.div`
 			height: 50px;
 			padding: 5px;
 			font-size: 1rem;
+			resize: none;
 		}
 		button {
 			padding: 8px;

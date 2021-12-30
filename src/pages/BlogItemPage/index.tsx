@@ -22,7 +22,7 @@ const Page = () => {
 		<PageContainer>
 			<C.Container>
 				<div className="goBack">
-					<Link to="/blog"><ArrowBackIcon style={{ fontSize: '0.9rem' }}/> Voltar</Link>
+					<Link to="/blog"><ArrowBackIcon style={{ fontSize: '0.9rem' }} /> Voltar</Link>
 				</div>
 
 				<div className="dateCreated">

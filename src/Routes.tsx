@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import Add from './pages/Add';
 import MyAccount from './pages/MyAccount';
 import BlogItemPage from './pages/BlogItemPage';
+import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
 const Page =  () => {
@@ -28,6 +29,8 @@ const Page =  () => {
 						<MyAccount />
 					</PrivateRoute>
 				}/>
+
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		);
 }

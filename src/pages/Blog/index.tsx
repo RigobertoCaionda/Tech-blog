@@ -5,6 +5,9 @@ import * as C from './styled';
 import SearchInput from '../../components/SearchInput';
 import NewsItem from '../../components/News';
 import { NewListItem } from '../../types/NewListItem';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 const Page = () => {
 	const [newsList, setNewsList] = useState<NewListItem[]>([
 			{
@@ -99,9 +102,19 @@ const Page = () => {
 					}
 
 					<div className="pagination">
-						<div className="prev"><Link to="/prev">Anterior</Link></div>
+						<div className="prev">
+							<Link to="/prev">
+								<ArrowBackIcon style={{ fontSize: '0.8rem' }} />Anterior
+							</Link>
+						</div>
+
 						<div className="current">1 de 6</div>
-						<div className="next"><Link to="/next">Proxima</Link></div>
+
+						<div className="next">
+							<Link to="/next">
+								<ArrowForwardIcon style={{ fontSize: '0.8rem' }} />Próxima
+							</Link>
+						</div>
 					</div>
 				</C.Container>
 			</PageContainer>
