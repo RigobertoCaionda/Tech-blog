@@ -94,6 +94,7 @@ const Page = () => {
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>
+							<small>há 5 minutos</small>
 						</div>
 					</div>
 					{/*O segundo wrapper representa o segundo comentario*/}
@@ -110,6 +111,7 @@ const Page = () => {
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>
+							<small>há 14 horas</small>
 						</div>
 					</div>
 				{/*Termino do segundo comentario*/}
@@ -128,6 +130,7 @@ const Page = () => {
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>
+							<small>ontem às 18:25</small>
 						</div>
 					</div>
 			{/*termino do terceiro comentario*/}

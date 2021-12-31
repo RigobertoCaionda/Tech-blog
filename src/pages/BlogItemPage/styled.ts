@@ -58,6 +58,9 @@ export const Container = styled.div`
 			padding-bottom: 5px;
 		}
 		.links {
+			small {
+				color: #757575;
+			}
 			a {
 				margin-right: 10px;
 				text-decoration: none;

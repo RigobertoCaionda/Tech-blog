@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { FormEvent, useState, useRef } from 'react';
 import * as C from './styled';
 import { PageContainer, PageTitle } from '../../app.styled';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
@@ -6,8 +6,11 @@ import AddIcon from '@material-ui/icons/AddCircleOutline';
 const Page = () => {
 	const [subjectList, setSubjectList] = useState<string[]>([]);
 	const [texts, setTexts] = useState<string[]>([]);
+	const [title, setTitle] = useState('');
+	const [desc, setDesc] = useState('');
 	const inputValuesS = useRef<string[]>([]);
 	const inputValuesP = useRef<string[]>([]);
+	const [disabled, setDisabled] = useState(false);
 
 	const handleClick = () => {
 		setSubjectList(state => [...state, '']);
@@ -17,7 +20,20 @@ const Page = () => {
 
 	const handleClickP = () => {
 		setTexts(state => [...state, '']);
-		inputValuesS.current.push('');
+		inputValuesP.current.push('');
+	}
+
+	const handleButtonClick = (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
+		e.preventDefault();
+		setDisabled(true);
+		let data = {
+			title,
+			subjects: inputValuesS.current,
+			texts: inputValuesP.current,
+			desc
+		}
+
+		console.log(data);
 	}
 	
 	return (
@@ -27,7 +43,8 @@ const Page = () => {
 					<form method="POST">
 						<div className="input-area">
 							<label>Título</label>
-							<input type="text" placeholder="Adicione o titulo..." />
+							<input type="text" placeholder="Adicione o titulo..." value={title}
+							onChange={e => setTitle(e.target.value)} disabled={disabled}/>
 						</div>
 
 						<div className="input-area">
@@ -36,9 +53,9 @@ const Page = () => {
 								<input type="text" placeholder="ex: desenvolvimento, TI, junior, etc." 
 								onChange={e => {
 									inputValuesS.current[0] = e.target.value;
-								}} />
+								}} disabled={disabled} />
 								<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
-									onClick={handleClick}/>
+									onClick={handleClick} />
 							</div>
 
 							{subjectList.length > 0 &&
@@ -48,7 +65,7 @@ const Page = () => {
 										placeholder="ex: desenvolvimento, TI, junior, etc."  
 										onChange={e => {
 											inputValuesS.current[key+1] = e.target.value;
-										}} />
+										}} disabled={disabled} />
 								</div>
 									))
 							}
@@ -61,9 +78,9 @@ const Page = () => {
 								<textarea placeholder="Clique no + para adicionar um parágrafo" 
 								onChange={e => {
 									inputValuesP.current[0] = e.target.value;
-								}}></textarea>
+								}} disabled={disabled} ></textarea>
 								<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
-									onClick={handleClickP}/>
+									onClick={handleClickP} />
 							</div>
 
 							{texts.length > 0 &&
@@ -72,7 +89,7 @@ const Page = () => {
 									<textarea placeholder="Clique no + para adicionar um parágrafo"  
 										onChange={e => {
 											inputValuesP.current[key+1] = e.target.value;
-										}}>
+										}} disabled={disabled} >
 									</textarea>
 								</div>
 									))
@@ -82,11 +99,12 @@ const Page = () => {
 
 						<div className="input-area">
 							<label>Descrição</label>
-							<textarea placeholder="Adicione uma descrição..."></textarea>
+							<textarea placeholder="Adicione uma descrição..." value={desc} 
+							onChange={e => setDesc(e.target.value)} disabled={disabled} ></textarea>
 						</div>
 
 						<div className="input-area button">
-							<button className="send-button">Enviar</button>
+							<button onClick={handleButtonClick} disabled={disabled}>Enviar</button>
 						</div>
 
 					</form>
