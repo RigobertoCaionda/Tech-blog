@@ -15,7 +15,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['carreira', 'misc', 'programacao'],
 				text: ['Depois de um tempo trabalhando com tecnologia a gente começa a perceber que o código escrito hoje eventualmente vai acabar sendo o código legado de amanhã, mesmo que tenham sido escritos seguindo os melhores padrões e abordagens sempre vão ter coisas que podem ser melhoradas.', 'Isso porque além da velocidade que as coisas mudam e novidades aparecem, a tendência é que a gente também fique cada vez melhor dia após dia fazendo com que projetos criados no passado muitas vezes pareçam muito piores do que na verdade eram.', 'Fora isso ainda tem outro fator que muitas vezes não levamos em consideração ao avaliar um código ou um projeto mais antigo:', 'Mas eu lembrava que tinha ido além, peguei umas noites e tentei fazer um projeto que pudesse servir como portfólio depois, então foram algumas noites trabalhando nisso com todo suporte do saudoso site do Maujor até que eu tivesse uma versão minimamente apresentável.', 'Então procurei por esse projeto por muito tempo em vão até que esses dias, vasculhando numa caixa de email antiga (que inclusive era a forma que a gente versionava arquivos no passado 😅) acabei encontrando.'],
-				desc: 'Sempre tive curiosidade pra ver os primeiros projetos que trabalhei e depois de muito tempo procurando finalmente encontrei o primeiro site experimental que desenvolvi.'
+				desc: 'Sempre tive curiosidade pra ver os primeiros projetos que trabalhei e depois de muito tempo procurando finalmente encontrei o primeiro site experimental que desenvolvi.',
+				views: 73,
+				likes: 34,
+				userId: 12
 			});
 	let { id } = useParams();
 	return (
@@ -27,6 +30,10 @@ const Page = () => {
 
 				<div className="dateCreated">
 					<small>{dateFormatter(blogItem.dateCreated)}</small>
+					<div className="views-and-likes">
+						<small>{blogItem.likes} likes</small>
+						<small>{blogItem.views} visualizações</small>
+					</div>
 				</div>
 
 				<div className="title">
@@ -91,6 +98,7 @@ const Page = () => {
 						</div>
 
 						<div className="links">
+							<span>20 </span>
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>
@@ -108,6 +116,7 @@ const Page = () => {
 						</div>
 
 						<div className="links">
+							<span>50 </span>
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>
@@ -127,6 +136,7 @@ const Page = () => {
 						</div>
 
 						<div className="links">
+							<span>700 </span>
 							<Link to="/like">Like</Link>
 							<Link to="/edit-comment">Editar</Link>
 							<Link to="/delete-comment">Eliminar</Link>

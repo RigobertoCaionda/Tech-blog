@@ -38,7 +38,21 @@ export const Container = styled.div`
 	}
 
 	.dateCreated {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin-bottom: 30px;
+
+		.views-and-likes {
+			small {
+				font-size: 0.8rem;
+				margin-right: 50px;
+			}
+			small: last-child {
+				margin-right: 0;
+			}
+		}
+
 		small {
 			color: #757575;
 		}

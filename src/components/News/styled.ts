@@ -8,9 +8,22 @@ export const Container = styled.a`
 	text-decoration: none;
 	border-radius: 3px;
 	transition: box-shadow 0.3s linear;
+
 	&: hover {
 		box-shadow: 0px 1px 3px #187888;
 	}
+
+	.views-and-likes {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 10px;
+
+		small {
+			color: #757575;
+		}
+	}
+
 	.subject {
 		color: #1b1b1b;
 		font-weight: 300;

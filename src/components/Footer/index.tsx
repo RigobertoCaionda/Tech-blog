@@ -1,8 +1,11 @@
 import { FooterArea } from './styled';
+
 const Page = () => {
+	let date: Date = new Date();
+
 	return (
 		<FooterArea>
-				©2021 techblog - Todos os direitos reservados
+				©{date.getFullYear()} techblog - Todos os direitos reservados
 		</FooterArea>
 		);
 }

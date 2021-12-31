@@ -13,7 +13,10 @@ const Page: React.FC = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 500,
+				likes: 40,
+				userId: 12
 			},
 			{
 				id: 10,
@@ -21,7 +24,10 @@ const Page: React.FC = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 1203,
+				likes: 100,
+				userId: 11
 			},
 			{
 				id: 7,
@@ -29,7 +35,10 @@ const Page: React.FC = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 10
 			},
 			{
 				id: 6,
@@ -37,7 +46,10 @@ const Page: React.FC = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 870,
+				likes: 21,
+				userId: 9
 			}
 		]);
 	return (
@@ -46,7 +58,7 @@ const Page: React.FC = () => {
 					<PageTitle>Minhas postagens</PageTitle>
 					{postList.length > 0 &&
 						postList.map((item, key) => (
-								<NewsItem key={key} item={item} />/*O link deve ja sair pronto daqui e a depender do link ele vai para o BlogItemPage ou na pagina de edicao do user*/
+								<NewsItem key={key} item={item} link={`/blog/${item.id}/user/${item.userId}`} />
 							))
 					}
 

@@ -16,7 +16,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 1
 			},
 			{
 				id: 2,
@@ -24,7 +27,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 450,
+				likes: 100,
+				userId: 2
 			},
 			{
 				id: 3,
@@ -32,7 +38,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 0,
+				likes: 0,
+				userId: 3
 			},
 			{
 				id: 4,
@@ -40,7 +49,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 30,
+				likes: 20,
+				userId: 4
 			},
 			{
 				id: 5,
@@ -48,7 +60,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 5
 			},
 			{
 				id: 6,
@@ -56,7 +71,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 50,
+				likes: 10,
+				userId: 6
 			},
 			{
 				id: 7,
@@ -64,7 +82,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 7
 			},
 			{
 				id: 8,
@@ -72,7 +93,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 42,
+				likes: 11,
+				userId: 8
 			},
 			{
 				id: 9,
@@ -80,7 +104,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 9
 			},
 			{
 				id: 10,
@@ -88,8 +115,11 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
-			},
+				desc: 'gghhgjhkjk',
+				views: 250,
+				likes: 110,
+				userId: 10
+			}
 		]);
 	return (
 			<PageContainer>
@@ -97,7 +127,7 @@ const Page = () => {
 					<SearchInput />
 					{newsList.length > 0 &&
 						newsList.map((i,k)=>(
-								<NewsItem key={k} item={i} />
+								<NewsItem key={k} item={i} link={`/blog/${i.id}`} />
 							))
 					}
 

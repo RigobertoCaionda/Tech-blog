@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import Add from './pages/Add';
 import MyAccount from './pages/MyAccount';
 import BlogItemPage from './pages/BlogItemPage';
+import EditProfile from './pages/EditProfile';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -27,6 +28,12 @@ const Page =  () => {
 				<Route path="/my-account" element={
 					<PrivateRoute>
 						<MyAccount />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/blog/:id/user/:userId" element={
+					<PrivateRoute>
+						<EditProfile />
 					</PrivateRoute>
 				}/>
 

@@ -14,7 +14,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 230,
+				likes: 110,
+				userId: 10
 			},
 			{
 				id: 10,
@@ -22,7 +25,10 @@ const Page = () => {
 				dateCreated: new Date(),
 				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
 				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk'
+				desc: 'gghhgjhkjk',
+				views: 221,
+				likes: 221,
+				userId: 14
 			}
 		]);
 	return (
@@ -35,7 +41,7 @@ const Page = () => {
 						<div className="last-updates-area">
 							{lastNews.length > 0 &&
 								lastNews.map((i,k)=>(
-										<NewsItem key={k} item={i} />
+										<NewsItem key={k} item={i} link={`/blog/${i.id}`} />
 									))
 							}
 						</div>

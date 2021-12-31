@@ -4,5 +4,8 @@ export type NewListItem = {
 	dateCreated: Date;
 	desc: string;
 	subject: string[];
-	text: string[]
+	text: string[];
+	views: number;
+	likes: number;
+	userId: number;
 };//subject vai os assuntos 
