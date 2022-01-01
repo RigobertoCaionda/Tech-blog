@@ -11,6 +11,7 @@ import EditMyBlogItem from './pages/EditMyBlogItem';
 import DeleteAccount from './pages/DeleteAccount';
 import EditProfile from './pages/EditProfile';
 import EditComment from './pages/EditComment';
+import DeleteComment from './pages/DeleteComment';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -63,6 +64,12 @@ const Page =  () => {
 				<Route path="/edit-comment/:id" element={
 					<PrivateRoute>
 						<EditComment />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/delete-comment/:id" element={
+					<PrivateRoute>
+						<DeleteComment />
 					</PrivateRoute>
 				}/>
 
