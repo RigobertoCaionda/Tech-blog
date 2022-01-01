@@ -10,6 +10,7 @@ import BlogItemPage from './pages/BlogItemPage';
 import EditMyBlogItem from './pages/EditMyBlogItem';
 import DeleteAccount from './pages/DeleteAccount';
 import EditProfile from './pages/EditProfile';
+import EditComment from './pages/EditComment';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -56,6 +57,12 @@ const Page =  () => {
 				<Route path="/blog/:id/user/:userId" element={
 					<PrivateRoute>
 						<EditMyBlogItem />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/edit-comment/:id" element={
+					<PrivateRoute>
+						<EditComment />
 					</PrivateRoute>
 				}/>
 

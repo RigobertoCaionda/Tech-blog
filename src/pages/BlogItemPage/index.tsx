@@ -99,9 +99,9 @@ const Page = () => {
 
 						<div className="links">
 							<span>20 </span>
-							<Link to="/like">Like</Link>
-							<Link to="/edit-comment">Editar</Link>
-							<Link to="/delete-comment">Eliminar</Link>
+							<button title="Clique para gostar">like</button>
+							<Link to="/edit-comment/12">editar</Link>
+							<Link to="/delete-comment/12">eliminar</Link>
 							<small>há 5 minutos</small>
 						</div>
 					</div>
@@ -117,9 +117,9 @@ const Page = () => {
 
 						<div className="links">
 							<span>50 </span>
-							<Link to="/like">Like</Link>
-							<Link to="/edit-comment">Editar</Link>
-							<Link to="/delete-comment">Eliminar</Link>
+							<button title="Clique para gostar">like</button>
+							<Link to="/edit-comment/12">editar</Link>
+							<Link to="/delete-comment/12">eliminar</Link>
 							<small>há 14 horas</small>
 						</div>
 					</div>
@@ -137,10 +137,11 @@ const Page = () => {
 
 						<div className="links">
 							<span>700 </span>
-							<Link to="/like">Like</Link>
-							<Link to="/edit-comment">Editar</Link>
-							<Link to="/delete-comment">Eliminar</Link>
+							<button title="Clique para gostar">like</button>
+							<Link to="/edit-comment/11">editar</Link>
+							<Link to="/delete-comment/11">eliminar</Link>
 							<small>ontem às 18:25</small>
+							<small>editado</small>
 						</div>
 					</div>
 			{/*termino do terceiro comentario*/}

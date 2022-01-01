@@ -72,8 +72,23 @@ export const Container = styled.div`
 			padding-bottom: 5px;
 		}
 		.links {
+
+			button {
+				background-color: transparent;
+				border: 0;
+				margin-right: 10px;
+				font-size: 1rem;
+				color: #757575;
+				cursor: pointer;
+			}
+
 			small {
 				color: #757575;
+				margin-right: 10px;
+				font-size: 0.9rem;
+			}
+			small: last-child {
+				margin-right: 0;
 			}
 			a {
 				margin-right: 10px;
