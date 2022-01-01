@@ -2,7 +2,7 @@ import * as C from './styled';
 import { Link } from 'react-router-dom';
 import MenuItem from '../MenuItem';
 const Page = () => {
-	let logged = false;
+	let logged = true;
 	return (
 			<C.Container>
 				<div className="logo-area"><Link to="">Tech Blog</Link></div>

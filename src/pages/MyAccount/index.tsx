@@ -56,6 +56,13 @@ const Page: React.FC = () => {
 			<PageContainer>
 				<C.Container>
 					<PageTitle>Minhas postagens</PageTitle>
+
+					{1 === 1 &&
+						<div className="activate-account">
+							<Link to="/activate-account/12">ativar conta</Link>
+						</div>
+					}
+
 					{postList.length > 0 &&
 						postList.map((item, key) => (
 								<NewsItem key={key} item={item} link={`/blog/${item.id}/user/${item.userId}`} />
@@ -63,7 +70,8 @@ const Page: React.FC = () => {
 					}
 
 					<div className="user-options">
-						<Link to="/edit-profile">Editar Perfil</Link>
+						<Link to="/edit-profile/12">Editar Perfil</Link>
+						<Link to="/delete-account/12">Eliminar conta</Link>
 						<button>sair da conta</button>
 					</div>
 				</C.Container>

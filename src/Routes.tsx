@@ -7,6 +7,8 @@ import SignUp from './pages/SignUp';
 import Add from './pages/Add';
 import MyAccount from './pages/MyAccount';
 import BlogItemPage from './pages/BlogItemPage';
+import EditMyBlogItem from './pages/EditMyBlogItem';
+import DeleteAccount from './pages/DeleteAccount';
 import EditProfile from './pages/EditProfile';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
@@ -20,6 +22,14 @@ const Page =  () => {
 				<Route path="/about" element={ <Hi /> }/>	
 				<Route path="/signin" element={ <SignIn /> }/>
 				<Route path="/signup" element={ <SignUp /> }/>
+				<Route path="/english" element={ <div>Oi, view in english</div> }/>
+
+				<Route path="/delete-account/:id" element={
+					<PrivateRoute>
+						<DeleteAccount />
+					</PrivateRoute>
+				}/>
+
 				<Route path="/add" element={
 					<PrivateRoute>
 						<Add />
@@ -31,9 +41,21 @@ const Page =  () => {
 					</PrivateRoute>
 				}/>
 
-				<Route path="/blog/:id/user/:userId" element={
+				<Route path="/edit-profile/:id" element={
 					<PrivateRoute>
 						<EditProfile />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/activate-account/:id" element={
+					<PrivateRoute>
+						<div>Deseja realmente ativar a conta</div>
+					</PrivateRoute>
+				}/>
+
+				<Route path="/blog/:id/user/:userId" element={
+					<PrivateRoute>
+						<EditMyBlogItem />
 					</PrivateRoute>
 				}/>
 

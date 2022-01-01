@@ -2,6 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	padding-top: 40px;
+
+	.activate-account {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 20px;
+		a {
+			text-decoration: none;
+			font-style: italic;
+			font-weight: bold;
+			&: hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
 	.user-options {
 		margin-top: 70px;
 		display: flex;
