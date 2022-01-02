@@ -68,12 +68,12 @@ const Page = () => {
 				<div className="prev-and-next">
 					<div className="prev"><ArrowBackIcon style={{ fontSize: '1.1rem' }} />Anterior</div>
 					<div className="next"><ArrowForwardIcon style={{ fontSize: '1.1rem' }} />Próximo</div>
-					<Link to="/prev">
+					<Link to="/blog/10">
 						<small>30 de abril de 2021</small>
 						<h3>Collapse em 5 minutos sem Javascript</h3>
 					</Link>
 
-					<Link to="/next">
+					<Link to="/blog/11">
 						<small>30 de abril de 2021</small>
 						<h3>React, Angular ou Vue - Qual Framework Javascript escolheria hoje?</h3>
 					</Link>

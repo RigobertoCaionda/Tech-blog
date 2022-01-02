@@ -34,9 +34,9 @@ const Page = () => {
 	return (
 			<C.PageContainer>
 				<D.Container>
-					<div className="en"><Link to="/view-in-english">View in English</Link></div>
-					<ME_INFO data={{title: 'Olá', paragraphs: ['Sou Desenvolvedor Full stack, com bacharelato concluído em engenharia informática. Sou uma pessoa completamente apaixonada por tecnologia, principalmente pela área de programação de software.', 
-					'Sou uma pessoa super curiosa e estou sempre disposto a aprender coisas novas.']}} />
+					<div className="en"><Link to="/">Ver em Português</Link></div>
+					<ME_INFO data={{title: 'Hello', paragraphs: ["I'm a Full stack developer, i have a bachelor's degree in computer science. I am a person completely in love with technology, mainly by the area of software programming.", 
+					'I am a super curious person and i am always ready to learn new things.']}} />
 					<div className="last-updates">
 						<h3>Últimas do blog</h3>
 						<div className="last-updates-area">

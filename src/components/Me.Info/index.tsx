@@ -1,16 +1,22 @@
 import * as C from './styled';
-const Page = () => {
+
+type Props = {
+	data: {
+		title: string,
+		paragraphs: string[]
+	}
+}
+
+const Page: React.FC<Props> = ({ data }) => {
 	return (
 		<C.Container>
-			<h1>Olá!</h1>
+			<h1>{data.title}!</h1>
 		<div className="text">
-			<p>Sou Desenvolvedor Full stack, com bacharelato concluído em
-				engenharia informática. 
-				Sou uma pessoa completamente apaixonada por tecnologia, 
-				principalmente pela área de programação de software. 
-			</p>
-			<p>Sou uma pessoa super curiosa e estou sempre disposto a aprender 
-				coisas novas.</p>
+			{data.paragraphs.length > 0 &&
+				data.paragraphs.map((item, key) => (
+						<p key={key}>{item}</p>
+					))
+			}
 		</div>
 		</C.Container>
 		);

@@ -8,10 +8,10 @@ import Add from './pages/Add';
 import MyAccount from './pages/MyAccount';
 import BlogItemPage from './pages/BlogItemPage';
 import EditMyBlogItem from './pages/EditMyBlogItem';
-import DeleteAccount from './pages/DeleteAccount';
+import DeleteComponent from './components/DeleteComponent';
 import EditProfile from './pages/EditProfile';
 import EditComment from './pages/EditComment';
-import DeleteComment from './pages/DeleteComment';
+import ViewInEnglish from './pages/ViewInEnglish';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -24,11 +24,16 @@ const Page =  () => {
 				<Route path="/about" element={ <Hi /> }/>	
 				<Route path="/signin" element={ <SignIn /> }/>
 				<Route path="/signup" element={ <SignUp /> }/>
-				<Route path="/english" element={ <div>Oi, view in english</div> }/>
+				<Route path="/view-in-english" element={ <ViewInEnglish /> }/>
 
 				<Route path="/delete-account/:id" element={
 					<PrivateRoute>
-						<DeleteAccount />
+						<DeleteComponent data={{ 
+							key: 'delete-account',
+							title: 'Eliminação da conta',
+							paragraphs: ['Você realmente deseja eliminar esta conta?', 
+								'Se clicar em sim, a sua conta será eliminada para sempre depois de 2 horas, se quiser reverter esta ação vá ao teu perfil e clique em reverter.']
+						}} />
 					</PrivateRoute>
 				}/>
 
@@ -51,7 +56,12 @@ const Page =  () => {
 
 				<Route path="/activate-account/:id" element={
 					<PrivateRoute>
-						<div>Deseja realmente ativar a conta</div>
+						<DeleteComponent data={{ 
+							key: 'activate-account',
+							title: 'Reativação da conta',
+							paragraphs: ['Você realmente deseja reativar esta conta?', 
+								'Se clicar em sim, a sua conta será reativada.']
+						}} />
 					</PrivateRoute>
 				}/>
 
@@ -69,7 +79,12 @@ const Page =  () => {
 
 				<Route path="/delete-comment/:id" element={
 					<PrivateRoute>
-						<DeleteComment />
+						<DeleteComponent data={{ 
+							key: 'delete-comment',
+							title: 'Eliminação de comentário',
+							paragraphs: ['Você realmente deseja eliminar este comentário?', 
+								'Se clicar em sim, este comentário será apagado para sempre.']
+						}} />
 					</PrivateRoute>
 				}/>
 

@@ -11,12 +11,22 @@ export const Container = styled.header`
 	padding: 0 50px;
 	.logo-area {
 		a {
-			color: #e8e8e8;
 			font-size: 1.5rem;
 			text-decoration: none;
 		}
 	}
 `;
 export const MenuArea = styled.nav`
-	
+	button {
+		color: #e8e8e8;
+		background-color: transparent;
+		border: none;
+		font-size: 1rem;
+		cursor: pointer;
+		font-weight: 400;
+		padding: 0 5px 10px 5px;
+		&: hover {
+			color: #a1ecf7;
+		}
+	}
 `;
