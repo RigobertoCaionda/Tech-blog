@@ -17,14 +17,15 @@ const Page: React.FC = () => {
 		setDisabled(true);
 	}
 
-	const handleChange = (e: any) => {
-		if (imageRef.current !== null) {
-		imageRef.current.src = URL.createObjectURL(e.target.files[0]);
-	}
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const files = e.target.files;//Nao coloca aqui files[0], simplesmente verifica se files existe
+		if (imageRef.current && files) {
+			imageRef.current.src = URL.createObjectURL(files[0]);
+		}
 	}
 
 	const handleClick = () => {
-		fileRef?.current?.click();
+		fileRef.current?.click();//Essa interrogacao e para fazer com que nao de o erro de object is possibly null
 	}
 
 	return (

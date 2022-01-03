@@ -13,6 +13,7 @@ export const Container = styled.header`
 		a {
 			font-size: 1.5rem;
 			text-decoration: none;
+			display: block;
 		}
 	}
 `;

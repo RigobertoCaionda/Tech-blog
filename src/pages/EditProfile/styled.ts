@@ -5,6 +5,22 @@ export const Container = styled.div`
 
 	form {
 
+		.input-area.profile-pic {
+			align-items: center;
+
+			img {
+				width: 180px;
+				height: 180px;
+				border-radius: 50%;
+				object-fit: cover;
+				cursor: pointer;
+			}
+
+			input {
+				display: none;
+			}
+		}
+
 		.input-area.button {
 			align-items: flex-end;
 

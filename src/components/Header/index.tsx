@@ -12,7 +12,7 @@ const Page = () => {
 				<div className="logo-area"><MenuItem link="/" text="Tech Blog" /></div>
 
 				<C.MenuArea>
-					<MenuItem link="/about" text="quem somos" />
+					<MenuItem link="/about" text="sobre" />
 					<MenuItem link="/blog" text="blog" />
 					{!logged &&
 						<MenuItem link="/signin" text="entrar" />
@@ -21,12 +21,12 @@ const Page = () => {
 						<MenuItem link="/signup" text="cadastrar" />
 					}
 					{logged &&
-						<MenuItem link="/add" text="adicionar" />
+						<MenuItem link="/add" text="novo" />
 					}
 					{logged &&
 						<MenuItem link="/my-account" text="minha conta" />
 					}
-					<button onClick={handleDarkLightMode}>dark / light</button>
+					<button onClick={handleDarkLightMode}>dark</button>
 				</C.MenuArea>	
 			</C.Container>
 		);
