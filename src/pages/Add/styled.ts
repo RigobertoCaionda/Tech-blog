@@ -50,6 +50,10 @@ export const Container = styled.div`
 					resize: none;
 				}
 
+			.wrapper.first-wrapper {
+				width: 745px;
+			}
+
 			.wrapper {
 				display: flex;
 				align-items: center;
