@@ -1,9 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useRef, ChangeEvent } from 'react';
 import { PageContainer, PageTitle } from '../../app.styled';
 import { Container } from './styled';
 
 const Page: React.FC = () => {
 
+	const imageRef = useRef<HTMLImageElement>(null);
+	const fileRef = useRef<HTMLInputElement>(null);
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -15,11 +17,30 @@ const Page: React.FC = () => {
 		setDisabled(true);
 	}
 
+	const handleChange = (e: any) => {
+		if (imageRef.current !== null) {
+		imageRef.current.src = URL.createObjectURL(e.target.files[0]);
+	}
+	}
+
+	const handleClick = () => {
+		fileRef?.current?.click();
+	}
+
 	return (
 			<PageContainer>
 				<Container>
 					<PageTitle>Cadastrar usuário</PageTitle>
 					<form onSubmit={handleSubmit}>
+
+						<div className="input-area profile-pic">
+							<label>Foto de perfil</label>
+							<input type="file" disabled={disabled} 
+							onChange={(e) => handleChange(e)} ref={fileRef} accept="image/*" />
+							<img src="./logo192.png" ref={imageRef} alt="Profile Pic" 
+								onClick={handleClick} title="clique para trocar a foto de perfil" />
+						</div>
+
 						<div className="input-area">
 							<label>Nome Completo</label>
 							<input type="text" placeholder="exemplo: rigoberto caionda" 
@@ -45,11 +66,6 @@ const Page: React.FC = () => {
 							<label>Confirmar Senha</label>
 							<input type="password" placeholder="Repita a senha" disabled={disabled} 
 							value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-						</div>
-
-						<div className="input-area">
-							<label>Foto de perfil</label>
-							<input type="file" disabled={disabled} />
 						</div>
 
 						<div className="input-area button">
