@@ -50,7 +50,7 @@ export const Container = styled.div`
 				color: #757575;
 			}
 
-			input {
+			input, select {
 				width: 100%;
 				padding: 10px;
 				border-radius: 5px;

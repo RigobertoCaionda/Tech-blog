@@ -57,6 +57,15 @@ const Page: React.FC = () => {
 						</div>
 
 						<div className="input-area">
+							<label>Sexo</label>
+							<select>
+								<option></option>
+								<option>Masculino</option>
+								<option>Feminino</option>
+							</select>
+						</div>
+
+						<div className="input-area">
 							<label>Senha</label>
 							<input type="password" placeholder="8 caracteres no mínimo" 
 								disabled={disabled} value={password} 
