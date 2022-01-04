@@ -93,15 +93,15 @@ export const Container = styled.div`
 				margin-bottom: 10px !important;
 
 				textarea {
-					width: 95% !important;
+					width: 93% !important;
 					height: 100px !important;
 				}
 
 				input {
-					width: 95% !important;
+					width: 93% !important;
 				}
 				.wrapper.first-wrapper {
-					width: 310px !important;
+					width: 100% !important;
 				}
 			}
 		}

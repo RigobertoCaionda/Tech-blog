@@ -92,16 +92,16 @@ export const Container = styled.div`
 				margin-bottom: 15px !important;
 
 				input {
-					width: 95% !important;
+					width: 92% !important;
 				}
 
 				textarea {
-					width: 95% !important;
+					width: 92% !important;
 					height: 100px !important;
 				}
 
 				.wrapper.first-wrapper {
-					width: 310px !important;
+					width: 100% !important;
 				}
 			}
 		}

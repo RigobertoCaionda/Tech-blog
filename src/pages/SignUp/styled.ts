@@ -63,11 +63,15 @@ export const Container = styled.div`
 
 	@media (max-width: 600px) {
 		& {
+			width: 95%;
+			margin: auto;
+			padding-top: 20px;
+
 			form {
 				.input-area.profile-pic {
 					img {
-						width: 140px;
-						height: 140px;
+						width: 150px;
+						height: 150px;
 					}
 				}
 			}

@@ -12,8 +12,12 @@ export const Container = styled.div`
 
 	@media (max-width: 600px) {
 		& {
-			.text {
+			.text.second {
 				width: 90%;
+			}
+
+			.text {
+				width: 100%;
 				margin: 0 auto;
 			}
 		}
