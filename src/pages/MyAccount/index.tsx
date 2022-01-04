@@ -58,8 +58,7 @@ const Page: React.FC = () => {
 				<C.Container>
 					<PageTitle>Minhas postagens</PageTitle>
 
-				{{/* eslint-disable-next-line*/}}
-					{1 === 1 &&
+					{true &&
 						<div className="activate-account">
 							<Link to="/activate-account/12">ativar conta</Link>
 						</div>
