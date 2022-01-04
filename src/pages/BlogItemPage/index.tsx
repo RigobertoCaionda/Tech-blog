@@ -9,6 +9,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import LinkIcon from '@material-ui/icons/Link';
 
 const Page = () => {
+	// eslint-disable-next-line
 	const [blogItem, setBlogItem] = useState<NewListItem>({
 				id: 10,
 				title: 'Meu primeiro site feito em 2007',
@@ -20,6 +21,7 @@ const Page = () => {
 				likes: 34,
 				userId: 12
 			});
+	// eslint-disable-next-line
 	let { id } = useParams();
 	return (
 		<PageContainer>

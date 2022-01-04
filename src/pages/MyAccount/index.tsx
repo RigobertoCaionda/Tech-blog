@@ -6,6 +6,7 @@ import NewsItem  from '../../components/News';
 import { NewListItem } from '../../types/NewListItem';
 
 const Page: React.FC = () => {
+	// eslint-disable-next-line
 	const [postList, setPostList] = useState<NewListItem[]>([
 			{
 				id: 9,
@@ -57,6 +58,7 @@ const Page: React.FC = () => {
 				<C.Container>
 					<PageTitle>Minhas postagens</PageTitle>
 
+				{{/* eslint-disable-next-line*/}}
 					{1 === 1 &&
 						<div className="activate-account">
 							<Link to="/activate-account/12">ativar conta</Link>

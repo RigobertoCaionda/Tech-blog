@@ -9,6 +9,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const Page = () => {
+	// eslint-disable-next-line
 	const [newsList, setNewsList] = useState<NewListItem[]>([
 			{
 				id: 1,

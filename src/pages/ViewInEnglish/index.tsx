@@ -7,6 +7,7 @@ import ME_INFO from '../../components/Me.Info';
 import { NewListItem } from '../../types/NewListItem';
 
 const Page = () => {
+	// eslint-disable-next-line
 	const [lastNews, setLastNews] = useState<NewListItem[]>([
 			{
 				id: 9,
