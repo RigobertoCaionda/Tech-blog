@@ -14,4 +14,9 @@ export const LinkArea = styled.a<{active: boolean}>`
 		color: #a1ecf7;
 		border-bottom: 2px solid #187888;
 	}
+	@media (max-width: 600px) {
+		& {
+			margin-right: 5px;
+		}
+	}
 `;

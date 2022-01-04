@@ -26,7 +26,8 @@ const Page = () => {
 					{logged &&
 						<MenuItem link="/my-account" text="minha conta" />
 					}
-					<button onClick={handleDarkLightMode}>dark</button>
+					<button onClick={handleDarkLightMode}><i className="fas fa-moon" 
+						style={{ fontSize: '1.5rem' }} title="clique para alterar o tema"></i></button>
 				</C.MenuArea>	
 			</C.Container>
 		);

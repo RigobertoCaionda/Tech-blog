@@ -51,4 +51,30 @@ export const Container = styled.div`
 			}
 		}
 	}
+
+	@media (max-width: 600px) {
+		& {
+			padding-top: 15px;
+
+			.user-options {
+				margin-top: 25px;
+
+				a {
+					padding: 5px;
+					font-size: 0.9rem;
+
+				}
+
+				button {
+					padding: 5px;
+					font-size: 0.9rem;
+				}
+			}
+
+			.activate-account {
+				margin-bottom: 10px;
+				margin-top: -20px;
+			}
+		}
+	}
 `;

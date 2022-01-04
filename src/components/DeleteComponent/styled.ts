@@ -42,4 +42,27 @@ export const Card = styled.div`
 			font-size: 1.1rem;
 		}
 	}
+
+	@media (max-width: 600px) {
+
+		& {
+			height: auto;
+			width: 90%;
+			margin: auto;
+
+			.paragraphs {
+				p {
+					font-size: 1rem;
+					margin-bottom: 10px;
+				}
+			}
+
+			.button-groups {
+				button {
+					margin-right: 5px;
+					padding: 5px 10px;
+				}
+			}
+		}
+	}
 `;

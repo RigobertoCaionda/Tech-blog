@@ -75,7 +75,7 @@ const Page = () => {
 						<div className="input-area">
 							<label>Parágrafos</label>
 							<div className="wrapper first-wrapper">
-								<textarea placeholder="Clique no + para adicionar um parágrafo" 
+								<textarea placeholder="clique no + para adicionar um parágrafo" 
 								onChange={e => {
 									inputValuesP.current[0] = e.target.value;
 								}} disabled={disabled} ></textarea>

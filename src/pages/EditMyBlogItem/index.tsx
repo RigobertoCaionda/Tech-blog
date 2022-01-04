@@ -49,8 +49,8 @@ const Page = () => {
 
 						<div className="input-area">
 							<label>Assuntos</label>
-							<div className="wrapper">
-								<input type="text" placeholder="ex: desenvolvimento, TI, junior, etc." 
+							<div className="wrapper first-wrapper">
+								<input type="text" placeholder="ex: react.js." 
 								onChange={e => {
 									inputValuesS.current[0] = e.target.value;
 								}} disabled={disabled} />
@@ -62,7 +62,7 @@ const Page = () => {
 								subjectList.map((item, key) => (
 								<div className="wrapper" key={key}>
 									<input type="text" 
-										placeholder="ex: desenvolvimento, TI, junior, etc."  
+										placeholder="ex: typescript."  
 										onChange={e => {
 											inputValuesS.current[key+1] = e.target.value;
 										}} disabled={disabled} />
@@ -74,7 +74,7 @@ const Page = () => {
 
 						<div className="input-area">
 							<label>Parágrafos</label>
-							<div className="wrapper">
+							<div className="wrapper first-wrapper">
 								<textarea placeholder="Clique no + para adicionar um parágrafo" 
 								onChange={e => {
 									inputValuesP.current[0] = e.target.value;

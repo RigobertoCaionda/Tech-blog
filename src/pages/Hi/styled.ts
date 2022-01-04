@@ -9,4 +9,13 @@ export const Container = styled.div`
 		font-size: 1.1rem;
 		text-align: justify;
 	}
+
+	@media (max-width: 600px) {
+		& {
+			.text {
+				width: 90%;
+				margin: 0 auto;
+			}
+		}
+	}
 `;

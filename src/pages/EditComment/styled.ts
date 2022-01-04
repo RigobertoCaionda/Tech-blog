@@ -27,4 +27,20 @@ export const Container = styled.div`
 			}
 		}
 	}
+
+	@media (max-width: 600px) {
+		& {
+			padding-top: 20px;
+
+			.textarea {
+				textarea {
+					height: 100px;
+				}
+
+				button {
+					padding: 5px 10px;
+				}
+			}
+		}
+	}
 `;

@@ -24,7 +24,7 @@ const Page = ({ item, link }: Props) => {
 			<div className="subject">{item.subject.join(', ')}</div>
 
 			<div className="views-and-likes">
-				<small>{item.likes} likes</small>
+				<small>{item.likes} curtidas</small>
 				<small>{item.views} visualizações</small>
 			</div>
 		</C.Container>

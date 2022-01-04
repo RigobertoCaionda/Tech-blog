@@ -29,9 +29,9 @@ const Page = () => {
 				</div>
 
 				<div className="dateCreated">
-					<small>{dateFormatter(blogItem.dateCreated)}</small>
+					<small>{dateFormatter(blogItem.dateCreated)} às 19:05</small>
 					<div className="views-and-likes">
-						<small>{blogItem.likes} likes</small>
+						<small>{blogItem.likes} curtidas</small>
 						<small>{blogItem.views} visualizações</small>
 					</div>
 				</div>
@@ -83,6 +83,9 @@ const Page = () => {
 				<div className="comments-area">
 					<textarea placeholder="Comente este poste"></textarea>
 					<button>comentar</button>
+					<div className="like-button">
+						<i className="fas fa-heart" title="curtir"></i>
+					</div>
 				</div>
 
 				<div className="people-comments">
@@ -99,7 +102,7 @@ const Page = () => {
 
 						<div className="links">
 							<span>20 </span>
-							<button title="Clique para gostar">like</button>
+							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
 							<Link to="/edit-comment/12">editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
 							<small>há 5 minutos</small>
@@ -117,7 +120,7 @@ const Page = () => {
 
 						<div className="links">
 							<span>50 </span>
-							<button title="Clique para gostar">like</button>
+							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
 							<Link to="/edit-comment/12">editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
 							<small>há 14 horas</small>
@@ -137,7 +140,7 @@ const Page = () => {
 
 						<div className="links">
 							<span>700 </span>
-							<button title="Clique para gostar">like</button>
+							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
 							<Link to="/edit-comment/11">editar</Link>
 							<Link to="/delete-comment/11">eliminar</Link>
 							<small>ontem às 18:25</small>

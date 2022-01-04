@@ -60,4 +60,17 @@ export const Container = styled.div`
 
 		}
 	}
+
+	@media (max-width: 600px) {
+		& {
+			form {
+				.input-area.profile-pic {
+					img {
+						width: 140px;
+						height: 140px;
+					}
+				}
+			}
+		}
+	}
 `;

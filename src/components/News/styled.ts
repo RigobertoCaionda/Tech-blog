@@ -47,4 +47,28 @@ export const Container = styled.a`
 			color: #757575;
 		}
 	}
+
+	@media (max-width: 600px) {
+		& {
+			padding: 10px;
+			width: 90%;
+			margin: 0 auto 25px auto;
+			
+			.date-created {
+				margin-bottom: 10px;
+			}
+
+			.desc {
+				margin-bottom: 10px;
+			}
+
+			.title {
+				margin-bottom: 10px;
+
+				h1 {
+					font-size: 1.1rem;
+				}
+			}
+		}
+	}
 `;

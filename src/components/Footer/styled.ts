@@ -5,4 +5,10 @@ export const FooterArea = styled.footer`
 	text-align: center;
 	font-size: 0.9rem;
 	padding-bottom: 20px;
+
+	@media (max-width: 600px) {
+		& {
+			margin-top: 50px;
+		}
+	}
 `;

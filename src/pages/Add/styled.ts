@@ -74,4 +74,36 @@ export const Container = styled.div`
 			}
 		}
 	}
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		& {
+			.input-area {
+				.wrapper.first-wrapper {
+					width: 667px !important;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 600px) {
+		& {
+			padding: 20px 0;
+			.input-area {
+				margin-bottom: 15px !important;
+
+				input {
+					width: 95% !important;
+				}
+
+				textarea {
+					width: 95% !important;
+					height: 100px !important;
+				}
+
+				.wrapper.first-wrapper {
+					width: 310px !important;
+				}
+			}
+		}
+	}
 `;

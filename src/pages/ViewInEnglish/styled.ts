@@ -36,4 +36,10 @@ export const Container = styled.div`
 			border-bottom: 2px solid #187888;
 		}
 	}
+
+	@media (max-width: 600px) {
+		& {
+			padding: 15px 0 0 0;
+		}
+	}
 `;

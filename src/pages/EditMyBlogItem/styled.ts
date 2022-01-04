@@ -50,6 +50,10 @@ export const Container = styled.div`
 					resize: none;
 				}
 
+			.wrapper.first-wrapper {
+				width: 745px;
+			}
+
 			.wrapper {
 				display: flex;
 				align-items: center;
@@ -66,6 +70,38 @@ export const Container = styled.div`
 					border-radius: 5px;
 					border: 1px solid #1b1b1b;
 					font-size: 1rem;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		& {
+			.input-area {
+				.wrapper.first-wrapper {
+					width: 667px !important;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 600px) {
+		& {
+			padding: 20px 0;
+
+			.input-area {
+				margin-bottom: 10px !important;
+
+				textarea {
+					width: 95% !important;
+					height: 100px !important;
+				}
+
+				input {
+					width: 95% !important;
+				}
+				.wrapper.first-wrapper {
+					width: 310px !important;
 				}
 			}
 		}
