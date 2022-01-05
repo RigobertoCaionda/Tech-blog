@@ -2,6 +2,7 @@ import { FormEvent, useState, useRef } from 'react';
 import * as C from './styled';
 import { PageContainer, PageTitle } from '../../app.styled';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 
 const Page = () => {
 	const [subjectList, setSubjectList] = useState<string[]>([]);
@@ -35,6 +36,27 @@ const Page = () => {
 
 		console.log(data);
 	}
+
+	const handleRemoveClickS = () => {
+		if (subjectList.length > 0) {
+			let newSubjectList = subjectList.
+			filter((item, key) => (key + 1) !== subjectList.length ? true : false);
+
+			setSubjectList(newSubjectList);
+			inputValuesS.current.pop();
+		}
+	}
+
+	const handleRemoveClickP = () => {
+		if (texts.length > 0) {
+			let newTextList = texts.
+			filter((item, key) => (key + 1) !== texts.length ? true : false);
+
+			setTexts(newTextList);
+			inputValuesP.current.pop();
+		}
+	}
+
 	
 	return (
 			<PageContainer>
@@ -50,12 +72,16 @@ const Page = () => {
 						<div className="input-area">
 							<label>Assuntos</label>
 							<div className="wrapper first-wrapper">
-								<input type="text" placeholder="ex: react. clique no + para adicionar um assunto" 
+								<input type="text" placeholder="clique no + para adicionar um assunto" 
 								onChange={e => {
 									inputValuesS.current[0] = e.target.value;
 								}} disabled={disabled} />
 								<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
 									onClick={handleClick} />
+								{subjectList.length > 0 &&
+									<RemoveIcon style={{ color: '#757575', cursor: 'pointer' }} 
+									onClick={handleRemoveClickS} />
+								}
 							</div>
 
 							{subjectList.length > 0 &&
@@ -66,6 +92,12 @@ const Page = () => {
 										onChange={e => {
 											inputValuesS.current[key+1] = e.target.value;
 										}} disabled={disabled} />
+									<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
+										onClick={handleClick} />
+									{subjectList.length > 0 &&
+										<RemoveIcon style={{ color: '#757575', cursor: 'pointer' }} 
+										onClick={handleRemoveClickS} />
+									}
 								</div>
 									))
 							}
@@ -81,6 +113,10 @@ const Page = () => {
 								}} disabled={disabled} ></textarea>
 								<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
 									onClick={handleClickP} />
+									{texts.length > 0 &&
+										<RemoveIcon style={{ color: '#757575', cursor: 'pointer' }} 
+										onClick={handleRemoveClickP} />
+									}
 							</div>
 
 							{texts.length > 0 &&
@@ -89,8 +125,14 @@ const Page = () => {
 									<textarea placeholder="Clique no + para adicionar um parágrafo"  
 										onChange={e => {
 											inputValuesP.current[key+1] = e.target.value;
-										}} disabled={disabled} >
+										}} disabled={disabled}>
 									</textarea>
+									<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
+										onClick={handleClickP} />
+									{texts.length > 0 &&
+										<RemoveIcon style={{ color: '#757575', cursor: 'pointer' }} 
+										onClick={handleRemoveClickP} />
+									}
 								</div>
 									))
 							}
