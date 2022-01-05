@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';//Cria script global
 
 export default createGlobalStyle`
 	* {
