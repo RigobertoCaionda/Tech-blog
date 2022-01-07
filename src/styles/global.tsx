@@ -8,7 +8,15 @@ export default createGlobalStyle`
 	  font-family: 'Roboto', sans-serif;
 	}
 
+	html {
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+
 	body {
-		overscroll-behavior: none;
+		height: 100%;
+		overflow: auto;
+		position: relative;
 	}
 `;
