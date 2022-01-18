@@ -38,7 +38,7 @@ const Page = () => {
 
 				<div className="dateCreated">
 					{blogItem.dateCreated &&
-						<small>{dateFormatter(blogItem.dateCreated)}</small>
+						<small>{dateFormatter(blogItem.dateCreated)} às 19:05</small>
 					}
 					<div className="views-and-likes">
 						<small>{blogItem.likes} curtidas</small>
