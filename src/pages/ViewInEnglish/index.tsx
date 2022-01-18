@@ -10,26 +10,34 @@ const Page = () => {
 	// eslint-disable-next-line
 	const [lastNews, setLastNews] = useState<NewListItem[]>([
 			{
-				id: 9,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 230,
-				likes: 110,
-				userId: 10
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			},
 			{
-				id: 10,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 221,
-				likes: 221,
-				userId: 14
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			}
 		]);
 	return (

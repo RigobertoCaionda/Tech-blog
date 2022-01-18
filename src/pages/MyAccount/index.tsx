@@ -10,48 +10,64 @@ const Page: React.FC = () => {
 	// eslint-disable-next-line
 	const [postList, setPostList] = useState<NewListItem[]>([
 			{
-				id: 9,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 500,
-				likes: 40,
-				userId: 12
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			},
 			{
-				id: 10,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 1203,
-				likes: 100,
-				userId: 11
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			},
 			{
-				id: 7,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 250,
-				likes: 110,
-				userId: 10
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			},
 			{
-				id: 6,
-				title: 'React.js, Angular ou Vue.js?',
+				id: 0,
+				title: '',
 				dateCreated: new Date(),
-				subject: ['desenvolvimento', 'junior', 'programacao', 'marketing'],
-				text: ['eu amo ddfddsdssddsds', 'dsdsfdsffdssfsdxddd', 'fsdsgrfddfdsfdf', 'sfsdffddsffds'],
-				desc: 'gghhgjhkjk',
-				views: 870,
-				likes: 21,
-				userId: 9
+				subject: [],
+				text: [],
+				desc: '',
+				views: 0,
+				likes: 0,
+				likedByUsers: [],
+				userLiked: false,
+				commentsList: [],
+				totalComments: 0,
+				userData: {}
 			}
 		]);
 
@@ -73,7 +89,7 @@ const Page: React.FC = () => {
 
 					{postList.length > 0 &&
 						postList.map((item, key) => (
-								<NewsItem key={key} item={item} link={`/blog/${item.id}/user/${item.userId}`} />
+								<NewsItem key={key} item={item} link={`/blog/${item.id}/user/${item.id}`} />
 							))
 					}
 
@@ -86,4 +102,4 @@ const Page: React.FC = () => {
 			</PageContainer>
 		);
 }
-export default Page;
+export default Page; // era userId

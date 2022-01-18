@@ -7,5 +7,9 @@ export type NewListItem = {
 	text: string[];
 	views: number;
 	likes: number;
-	userId: number;
-};//subject vai os assuntos 
+	likedByUsers: string[];
+	userLiked: boolean;
+	commentsList: object[];
+	totalComments: number;
+	userData: object;
+}; 

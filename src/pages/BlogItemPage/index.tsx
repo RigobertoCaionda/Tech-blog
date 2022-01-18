@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import * as C from './styled';
 import { PageContainer } from '../../app.styled';
@@ -7,22 +7,28 @@ import { dateFormatter } from '../../helpers/dateHelpers';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import LinkIcon from '@material-ui/icons/Link';
+import api from '../../api';
+import axios from 'axios';
 
 const Page = () => {
-	// eslint-disable-next-line
-	const [blogItem, setBlogItem] = useState<NewListItem>({
-				id: 10,
-				title: 'Meu primeiro site feito em 2007',
-				dateCreated: new Date(),
-				subject: ['carreira', 'misc', 'programacao'],
-				text: ['Depois de um tempo trabalhando com tecnologia a gente começa a perceber que o código escrito hoje eventualmente vai acabar sendo o código legado de amanhã, mesmo que tenham sido escritos seguindo os melhores padrões e abordagens sempre vão ter coisas que podem ser melhoradas.', 'Isso porque além da velocidade que as coisas mudam e novidades aparecem, a tendência é que a gente também fique cada vez melhor dia após dia fazendo com que projetos criados no passado muitas vezes pareçam muito piores do que na verdade eram.', 'Fora isso ainda tem outro fator que muitas vezes não levamos em consideração ao avaliar um código ou um projeto mais antigo:', 'Mas eu lembrava que tinha ido além, peguei umas noites e tentei fazer um projeto que pudesse servir como portfólio depois, então foram algumas noites trabalhando nisso com todo suporte do saudoso site do Maujor até que eu tivesse uma versão minimamente apresentável.', 'Então procurei por esse projeto por muito tempo em vão até que esses dias, vasculhando numa caixa de email antiga (que inclusive era a forma que a gente versionava arquivos no passado 😅) acabei encontrando.'],
-				desc: 'Sempre tive curiosidade pra ver os primeiros projetos que trabalhei e depois de muito tempo procurando finalmente encontrei o primeiro site experimental que desenvolvi.',
-				views: 73,
-				likes: 34,
-				userId: 12
-			});
-	// eslint-disable-next-line
+	const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
 	let { id } = useParams();
+
+	useEffect(() => {
+		const getPostInfo = async () => {
+		try {
+				let {data: json} = await api.get(`/blog/${id}`);
+				setBlogItem(json.data);
+			}
+			catch (e) {		 
+				if (axios.isAxiosError(e)) {
+				console.log(e.response?.data.data.error);
+			}
+			}
+		}
+		getPostInfo();
+	}, []);
+
 	return (
 		<PageContainer>
 			<C.Container>
@@ -31,7 +37,9 @@ const Page = () => {
 				</div>
 
 				<div className="dateCreated">
-					<small>{dateFormatter(blogItem.dateCreated)} às 19:05</small>
+					{blogItem.dateCreated &&
+						<small>{dateFormatter(blogItem.dateCreated)}</small>
+					}
 					<div className="views-and-likes">
 						<small>{blogItem.likes} curtidas</small>
 						<small>{blogItem.views} visualizações</small>
@@ -48,7 +56,7 @@ const Page = () => {
 
 				<div className="subject">
 					<LinkIcon style={{ fontSize: '1rem' }}/>  
-					{blogItem.subject.length > 0 &&
+					{blogItem.subject &&
 						blogItem.subject.map((item, key) => (
 								<Link to={`/query=${item}`} key={key}>
 									{key === (blogItem.subject.length - 1) ? `${item} ` : `${item}, `}
@@ -58,7 +66,7 @@ const Page = () => {
 				</div>
 
 				<div className="text">
-					{blogItem.text.length > 0 &&
+					{blogItem.text &&
 						blogItem.text.map((item, key) => (
 								<p key={key}>{item}</p>
 							))

@@ -45,7 +45,13 @@ const Page = () => {
 			}
 		} catch(e) {
 			if (axios.isAxiosError(e)) {
-				setError(e.response?.data.data.error);
+				let axiosError = e.response?.data.data.error;
+				if (axiosError === 'token é necessário' || axiosError === 'this token is not valid'
+					|| axiosError === 'Esse usuário não existe') {
+					navigate('/signin');
+					return;
+				}
+				setError(axiosError);
 			}
 		}
 		setDisabled(false);
@@ -53,8 +59,7 @@ const Page = () => {
 
 	const handleRemoveClickS = () => {
 		if (subjectList.length > 0) {
-			let newSubjectList = subjectList.
-			filter((item, key) => (key + 1) !== subjectList.length ? true : false);
+			let newSubjectList = subjectList.filter((item, key) => (key + 1) !== subjectList.length ? true : false);
 
 			setSubjectList(newSubjectList);
 			inputValuesS.current.pop();
@@ -63,8 +68,7 @@ const Page = () => {
 
 	const handleRemoveClickP = () => {
 		if (texts.length > 0) {
-			let newTextList = texts.
-			filter((item, key) => (key + 1) !== texts.length ? true : false);
+			let newTextList = texts.filter((item, key) => (key + 1) !== texts.length ? true : false);
 
 			setTexts(newTextList);
 			inputValuesP.current.pop();
