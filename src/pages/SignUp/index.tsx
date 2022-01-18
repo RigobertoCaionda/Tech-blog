@@ -3,6 +3,7 @@ import { PageContainer, PageTitle, ErrorMessage } from '../../app.styled';
 import { Container } from './styled';
 import { doLogin } from '../../helpers/AuthHandler';
 import api from '../../api';
+import axios from 'axios';
 
 const Page: React.FC = () => {
 
@@ -45,15 +46,22 @@ const Page: React.FC = () => {
 			fData.append('img', file ? file : '');
 
 		try {
-			let {data: json} = await api.post('/user/signup', fData as any);
+			let {data: json} = await api.post('/user/signup', fData, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			});
+
 			if (json.token) {
 				doLogin(json.token);
 				window.location.href = '/';
 			} else {
 				setError(json.data.error);
 			}
-		} catch(error) {
-			setError('Ocorreu algum erro');
+		} catch(e) {
+			if (axios.isAxiosError(e)) {
+				setError(e.response?.data.data.error);
+			}
 		}
 		} else {
 			setError(errors.join("\n"));
@@ -84,13 +92,14 @@ const Page: React.FC = () => {
 							<label>Foto de perfil</label>
 							<input type="file" disabled={disabled} 
 							onChange={(e) => handleChange(e)} ref={fileRef} accept="image/*" />
-							<img src="./logo192.png" ref={imageRef} alt="Profile Pic" 
+							<img src="/assets/default.jpg" ref={imageRef} alt="Profile Pic" 
 								onClick={handleClick} title="clique para trocar a foto de perfil" />
 						</div>
 
 						{error !== '' &&
 							<ErrorMessage>{error}</ErrorMessage>
 						}
+						
 						<div className="input-area">
 							<label>Nome Completo</label>
 							<input type="text" placeholder="exemplo: rigoberto caionda" 

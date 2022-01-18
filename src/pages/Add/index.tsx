@@ -1,12 +1,14 @@
 import { FormEvent, useState, useRef } from 'react';
 import * as C from './styled';
-import { PageContainer, PageTitle } from '../../app.styled';
+import { PageContainer, PageTitle, ErrorMessage } from '../../app.styled';
+import { useNavigate } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 import api from '../../api';
-import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const Page = () => {
+	const navigate = useNavigate();
 	const [subjectList, setSubjectList] = useState<string[]>([]);
 	const [texts, setTexts] = useState<string[]>([]);
 	const [title, setTitle] = useState('');
@@ -15,7 +17,6 @@ const Page = () => {
 	const inputValuesP = useRef<string[]>([]);
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState('');
-	let token: string = Cookies.get('token') as string;
 
 	const handleClick = () => {
 		setSubjectList(state => [...state, '']);
@@ -35,18 +36,17 @@ const Page = () => {
 
 		try {
 			let body = { title, desc, subject: inputValuesS.current, text: inputValuesP.current };
-			let {data: json} = await api.post('/blog/add', body, {
-				headers: {
-					authorization: `Bearer ${token}`
-				}
-			});
+			let {data: json} = await api.post('/blog/add', body);
 			if (json.id) {
-				alert('funciona');
+				navigate(`/blog/${json.id}`);
+				return;
 			} else {
 				setError(json.data.error);
 			}
-		} catch(error) {
-			setError('Ocorreu algum erro');
+		} catch(e) {
+			if (axios.isAxiosError(e)) {
+				setError(e.response?.data.data.error);
+			}
 		}
 		setDisabled(false);
 	}
@@ -77,6 +77,10 @@ const Page = () => {
 				<C.Container>
 					<PageTitle>Adicionar conteúdo</PageTitle>
 					<form method="POST">
+						{error !== '' &&
+							<ErrorMessage>{error}</ErrorMessage>
+						}
+
 						<div className="input-area">
 							<label>Título</label>
 							<input type="text" placeholder="Adicione o titulo..." value={title}

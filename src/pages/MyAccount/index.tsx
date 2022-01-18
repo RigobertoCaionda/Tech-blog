@@ -4,6 +4,7 @@ import * as C from './styled';
 import { PageContainer, PageTitle } from '../../app.styled';
 import NewsItem  from '../../components/News';
 import { NewListItem } from '../../types/NewListItem';
+import { doLogout } from '../../helpers/AuthHandler';
 
 const Page: React.FC = () => {
 	// eslint-disable-next-line
@@ -53,6 +54,12 @@ const Page: React.FC = () => {
 				userId: 9
 			}
 		]);
+
+	const handleLogout = () => {
+		doLogout();
+		window.location.href = '/';
+	}
+
 	return (
 			<PageContainer>
 				<C.Container>
@@ -73,7 +80,7 @@ const Page: React.FC = () => {
 					<div className="user-options">
 						<Link to="/edit-profile/12">Editar Perfil</Link>
 						<Link to="/delete-account/12">Eliminar conta</Link>
-						<button>sair da conta</button>
+						<button onClick={handleLogout}>sair da conta</button>
 					</div>
 				</C.Container>
 			</PageContainer>
