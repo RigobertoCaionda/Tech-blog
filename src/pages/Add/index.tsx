@@ -3,6 +3,8 @@ import * as C from './styled';
 import { PageContainer, PageTitle } from '../../app.styled';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
+import api from '../../api';
+import Cookies from 'js-cookie';
 
 const Page = () => {
 	const [subjectList, setSubjectList] = useState<string[]>([]);
@@ -12,6 +14,8 @@ const Page = () => {
 	const inputValuesS = useRef<string[]>([]);
 	const inputValuesP = useRef<string[]>([]);
 	const [disabled, setDisabled] = useState(false);
+	const [error, setError] = useState('');
+	let token: string = Cookies.get('token') as string;
 
 	const handleClick = () => {
 		setSubjectList(state => [...state, '']);
@@ -24,17 +28,27 @@ const Page = () => {
 		inputValuesP.current.push('');
 	}
 
-	const handleButtonClick = (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
+	const handleButtonClick = async (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
 		e.preventDefault();
+		setError('');
 		setDisabled(true);
-		let data = {
-			title,
-			subjects: inputValuesS.current,
-			texts: inputValuesP.current,
-			desc
-		}
 
-		console.log(data);
+		try {
+			let body = { title, desc, subject: inputValuesS.current, text: inputValuesP.current };
+			let {data: json} = await api.post('/blog/add', body, {
+				headers: {
+					authorization: `Bearer ${token}`
+				}
+			});
+			if (json.id) {
+				alert('funciona');
+			} else {
+				setError(json.data.error);
+			}
+		} catch(error) {
+			setError('Ocorreu algum erro');
+		}
+		setDisabled(false);
 	}
 
 	const handleRemoveClickS = () => {

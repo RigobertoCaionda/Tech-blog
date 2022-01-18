@@ -1,7 +1,8 @@
 import * as C from './styled';
 import MenuItem from '../MenuItem';
+import { isLogged } from '../../helpers/AuthHandler';
 const Page = () => {
-	let logged = true;
+	let logged: boolean = isLogged();
 
 	const handleDarkLightMode = () => {
 		alert('escuro - claro');
