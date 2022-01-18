@@ -101,63 +101,25 @@ const Page = () => {
 				<div className="people-comments">
 					<h2>Comentários</h2>
 
-					<div className="wrapper">
+					{blogItem.commentsList &&
+						blogItem.commentsList.map((item: any, key) => (
+						<div className="wrapper">
 						<div className="person-info">
-							<div className="photo"></div> <span>Rigoberto Caionda</span>
+							<div className="photo"></div> <span>{item.name}</span>
 						</div>
 
-						<div className="comment">
-								Eu gosto muito desse assunto Eu gosto muito desse assunto Eu gosto muito desse assunto Eu gosto muito desse assunto!
-						</div>
+						<div className="comment">{item.commentText}</div>
 
 						<div className="links">
-							<span>20 </span>
+							<span>{item.likes} </span>
 							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
 							<Link to="/edit-comment/12">editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
-							<small>há 5 minutos</small>
+							<small>{item.dateCreated}</small>
 						</div>
 					</div>
-					{/*O segundo wrapper representa o segundo comentario*/}
-					<div className="wrapper">
-						<div className="person-info">
-							<div className="photo"></div> <span>Cristiano Ronaldo</span>
-						</div>
-
-						<div className="comment">
-							Show de bola editor.
-						</div>
-
-						<div className="links">
-							<span>50 </span>
-							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
-							<Link to="/edit-comment/12">editar</Link>
-							<Link to="/delete-comment/12">eliminar</Link>
-							<small>há 14 horas</small>
-						</div>
-					</div>
-				{/*Termino do segundo comentario*/}
-
-			{/*Inicio do terceiro comentario*/}
-				<div className="wrapper">
-						<div className="person-info">
-							<div className="photo"></div> <span>Lionel Messi</span>
-						</div>
-
-						<div className="comment">
-							Simplesmente o melhor programador de Angola e um dos melhores do mundo no seu nivel.
-						</div>
-
-						<div className="links">
-							<span>700 </span>
-							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
-							<Link to="/edit-comment/11">editar</Link>
-							<Link to="/delete-comment/11">eliminar</Link>
-							<small>ontem às 18:25</small>
-							<small>editado</small>
-						</div>
-					</div>
-			{/*termino do terceiro comentario*/}
+							))
+					}
 
 				</div>
 
