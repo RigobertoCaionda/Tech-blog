@@ -3,12 +3,32 @@ import { useParams, Link } from 'react-router-dom';
 import * as C from './styled';
 import { PageContainer } from '../../app.styled';
 import { NewListItem } from '../../types/NewListItem';
-import { dateFormatter } from '../../helpers/dateHelpers';
+import { dateFormatter, timeFormatter, pastTime } from '../../helpers/dateHelpers';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import LinkIcon from '@material-ui/icons/Link';
 import api from '../../api';
 import axios from 'axios';
+
+type ItemType = {
+	id?: string;
+	idUser?: string;
+	name?: string;
+	gender?: string;
+	commentText?: string;
+	usersLiked?: string[];
+	likes?: number;
+	dateCreated?: Date;
+	v?: number;
+	liked?: boolean;
+	myComment?: boolean;
+	image?: string;
+};
+
+type BlogItemType = {
+	image: string;
+	name: string;
+};
 
 const Page = () => {
 	const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
@@ -36,9 +56,15 @@ const Page = () => {
 					<Link to="/blog"><ArrowBackIcon style={{ fontSize: '0.9rem' }} /> Voltar</Link>
 				</div>
 
+				<div className="userData">
+					De <span>{blogItem.userData ? (blogItem.userData as BlogItemType).name : ''}</span>
+						<img src={blogItem.userData ? (blogItem.userData as BlogItemType).image : '' } />
+				</div>
+
 				<div className="dateCreated">
 					{blogItem.dateCreated &&
-						<small>{dateFormatter(blogItem.dateCreated)} às 19:05</small>
+						<small>{dateFormatter(new Date(blogItem.dateCreated))} às 
+							{timeFormatter(new Date(blogItem.dateCreated))}</small>
 					}
 					<div className="views-and-likes">
 						<small>{blogItem.likes} curtidas</small>
@@ -94,7 +120,7 @@ const Page = () => {
 					<textarea placeholder="Comente este poste"></textarea>
 					<button>comentar</button>
 					<div className="like-button">
-						<i className="fas fa-heart" title="curtir"></i>
+						<i className="fas fa-heart" title="curtir" style={{ color: blogItem.userLiked ? '#f00' : '#1b1b1b' }}></i>
 					</div>
 				</div>
 
@@ -102,20 +128,26 @@ const Page = () => {
 					<h2>Comentários</h2>
 
 					{blogItem.commentsList &&
-						blogItem.commentsList.map((item: any, key) => (
-						<div className="wrapper">
+						blogItem.commentsList.map((item: ItemType, key) => (
+						<div className="wrapper" key={key}>
 						<div className="person-info">
-							<div className="photo"></div> <span>{item.name}</span>
+							<div className="photo"><img src={item.image} / ></div>
+								 <span style={{ color: item.myComment ? '#f00' : '#000' }}>{item.name}</span>
 						</div>
 
 						<div className="comment">{item.commentText}</div>
 
 						<div className="links">
 							<span>{item.likes} </span>
-							<button title="Clique para gostar"><i className="fas fa-heart"></i></button>
+							<button title="Clique para gostar">
+								<i className="fas fa-heart" style={{color: item.liked ? '#f00' : '#757575'}}></i>
+							</button>
 							<Link to="/edit-comment/12">editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
-							<small>{item.dateCreated}</small>
+							<small>{pastTime(new Date(item.dateCreated as Date), new Date())}</small>
+							{item.v &&
+								<small>editado</small>
+							}
 						</div>
 					</div>
 							))

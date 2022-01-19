@@ -3,6 +3,23 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	margin-top: 80px;
 
+	.userData {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+		font-style: italic;
+
+		span {
+			margin: 0 5px;
+		}
+
+		img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+		}
+	}
+
 	.prev-and-next {
 		margin-bottom: 30px;
 		display: grid;
@@ -115,8 +132,12 @@ export const Container = styled.div`
 				width: 40px;
 				height: 40px;
 				border-radius: 50%;
-				background-color: #1b1b1b;
 				margin-right: 10px;
+
+				img {
+					width: 100%;
+					border-radius: 50%;
+				}
 			}
 
 			span {
