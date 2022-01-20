@@ -90,15 +90,6 @@ export const Container = styled.div`
 		}
 		.links {
 
-			button {
-				background-color: transparent;
-				border: 0;
-				margin-right: 10px;
-				font-size: 1rem;
-				color: #757575;
-				cursor: pointer;
-			}
-
 			small {
 				color: #757575;
 				margin-right: 10px;

@@ -9,6 +9,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import LinkIcon from '@material-ui/icons/Link';
 import api from '../../api';
 import axios from 'axios';
+import Like from '../../components/Like';
 
 type ItemType = {
 	id?: string;
@@ -58,7 +59,7 @@ const Page = () => {
 
 				<div className="userData">
 					De <span>{blogItem.userData ? (blogItem.userData as BlogItemType).name : ''}</span>
-						<img src={blogItem.userData ? (blogItem.userData as BlogItemType).image : '' } />
+						<img src={blogItem.userData ? (blogItem.userData as BlogItemType).image : '' } alt="" />
 				</div>
 
 				<div className="dateCreated">
@@ -131,7 +132,7 @@ const Page = () => {
 						blogItem.commentsList.map((item: ItemType, key) => (
 						<div className="wrapper" key={key}>
 						<div className="person-info">
-							<div className="photo"><img src={item.image} / ></div>
+							<div className="photo"><img src={item.image} alt="" /></div>
 								 <span style={{ color: item.myComment ? '#f00' : '#000' }}>{item.name}</span>
 						</div>
 
@@ -139,15 +140,15 @@ const Page = () => {
 
 						<div className="links">
 							<span>{item.likes} </span>
-							<button title="Clique para gostar">
-								<i className="fas fa-heart" style={{color: item.liked ? '#f00' : '#757575'}}></i>
-							</button>
+							<Like title="Clique para gostar" 
+								color={item.liked ? '#f00' : '#757575'} 
+									commentId={item.id as string} postId={id as string}>
+										<i className="fas fa-heart"></i>
+							</Like>
 							<Link to="/edit-comment/12">editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
-							<small>{pastTime(new Date(item.dateCreated as Date), new Date())}</small>
-							{item.v &&
-								<small>editado</small>
-							}
+							<small>{pastTime(new Date(item.dateCreated as Date))}</small>
+							{item.v && item.v > 0 ? <small>editado</small> : null}
 						</div>
 					</div>
 							))
