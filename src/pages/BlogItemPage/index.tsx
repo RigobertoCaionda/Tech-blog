@@ -176,8 +176,14 @@ const Page = () => {
 										likes={item.likes as number}>
 										<i className="fas fa-heart"></i>
 							</Like>
-							<Link to={`/edit-comment/${item.id}/${id}`}>editar</Link>
-							<Link to="/delete-comment/12">eliminar</Link>
+							{item.myComment &&
+								<Link to={`/edit-comment/${item.id}/${id}`}>editar</Link>
+							}
+
+							{item.myComment &&
+								<Link to={`/delete-comment/${item.id}/${id}`}>eliminar</Link>
+							}
+							
 							<small>{pastTime(new Date(item.dateCreated as Date))}</small>
 							{item.v && item.v > 0 ? <small>editado</small> : null}
 						</div>

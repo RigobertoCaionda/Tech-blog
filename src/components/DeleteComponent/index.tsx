@@ -1,5 +1,8 @@
 import { PageContainer, PageTitle } from '../../app.styled';
 import { Container, Card } from './styled';
+import { useParams, useNavigate } from 'react-router-dom';
+import api from '../../api';
+import axios from 'axios';
 
 type Props = {
 	data: {
@@ -10,8 +13,10 @@ type Props = {
 }
 
 const Page: React.FC<Props> = ({ data }) => {
+	const {id, idPost} = useParams();
+	const navigate = useNavigate();
 
-	const handleClick = (response: 'yes' | 'no' | 'cancel') => {
+	const handleClick = async (response: 'yes' | 'no' | 'cancel') => {
 		switch(response) {
 			case 'yes':
 				switch(data.key) {
@@ -24,7 +29,21 @@ const Page: React.FC<Props> = ({ data }) => {
 					break;
 
 					case 'delete-comment':
-						alert('quer apagar comentario');
+						try {
+							let config = { data: { commentId: id } };
+							let { data: json } = await api.delete(`/blog/${idPost}/comment`, config);
+							if (json.data.status) {
+								return navigate(`/blog/${idPost}`);
+							}
+						} catch (e) {
+							if (axios.isAxiosError(e)) {
+							let axiosError = e.response?.data.data.error;
+							if (axiosError === 'token é necessário' || axiosError === 'this token is not valid'
+								|| axiosError === 'Esse usuário não existe') {
+								return navigate('/signin');
+							}
+						}
+						}
 					break;
 				}
 			break;
@@ -40,7 +59,7 @@ const Page: React.FC<Props> = ({ data }) => {
 					break;
 
 					case 'delete-comment':
-						alert('nao quer apagar comentario');
+						return navigate(`/blog/${idPost}`);
 					break;
 				}
 			break;
@@ -56,7 +75,7 @@ const Page: React.FC<Props> = ({ data }) => {
 					break;
 
 					case 'delete-comment':
-						alert('cancelou na eliminacao de comentario');
+						return navigate(`/blog/${idPost}`);
 					break;
 				}
 			break;

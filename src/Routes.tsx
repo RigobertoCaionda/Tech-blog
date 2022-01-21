@@ -77,7 +77,7 @@ const Page =  () => {
 					</PrivateRoute>
 				}/>
 
-				<Route path="/delete-comment/:id" element={
+				<Route path="/delete-comment/:id/:idPost" element={
 					<PrivateRoute>
 						<DeleteComponent data={{ 
 							key: 'delete-comment',
