@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from './styled';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api';
@@ -6,29 +6,31 @@ import axios from 'axios';
 
 type Props = {
 	colorBt: string;
-	title: string;
-	commentId: string;
-	likes: number;
 	postId: string;
+	setPostLikes: any;
+	postLikes: number; 
 };
 
-const Page: React.FC<Props> = ({children, colorBt, commentId, postId, likes}) => {
+const Page: React.FC<Props> = ({ colorBt, postId, setPostLikes, postLikes }) => {
 	const [btnColor, setBtnColor] = useState(colorBt);
-	const [likeCount, setLikeCount] = useState(likes);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		setBtnColor(colorBt);
+	}, [colorBt]);
 
 	const handleLikeClick = async () => {
 		if (btnColor === '#f00') {
 			setBtnColor('#757575');
-			setLikeCount(likeCount - 1);
+			setPostLikes(postLikes - 1);
 		} else {
 			setBtnColor('#f00');
-			setLikeCount(likeCount + 1);
+			setPostLikes(postLikes + 1);
 		}
 		
 		try {
-			let body = { commentId, option: btnColor === '#f00' ? false : true };
-			let {data: json} = await api.put(`/blog/${postId}/likeComment`, body);
+			let body = { option: btnColor === '#f00' ? false : true };
+			let {data: json} = await api.put(`/blog/${postId}/like`, body);
 
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
@@ -43,7 +45,7 @@ const Page: React.FC<Props> = ({children, colorBt, commentId, postId, likes}) =>
 	}
 
 	return (
-		<C.Like color={btnColor} onClick={handleLikeClick}><span>{likeCount} </span> {children}</C.Like>
+		<C.LikePost className="fas fa-heart" color={btnColor} title="curtir" onClick={handleLikeClick}></C.LikePost>
 		);
 }
 export default Page;

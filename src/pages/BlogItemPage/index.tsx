@@ -10,6 +10,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import api from '../../api';
 import axios from 'axios';
 import Like from '../../components/Like';
+import LikePost from '../../components/LikePost';
 
 type ItemType = {
 	id?: string;
@@ -33,7 +34,12 @@ type BlogItemType = {
 
 const Page = () => {
 	const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
+	const [postLikes, setPostLikes] = useState(blogItem.likes);
 	let { id } = useParams();
+
+	useEffect(() => {
+		setPostLikes(blogItem.likes);
+	}, [blogItem.likes]);
 
 	useEffect(() => {
 		const getPostInfo = async () => {
@@ -68,7 +74,7 @@ const Page = () => {
 							{timeFormatter(new Date(blogItem.dateCreated))}</small>
 					}
 					<div className="views-and-likes">
-						<small>{blogItem.likes} curtidas</small>
+						<small>{postLikes} curtidas</small>
 						<small>{blogItem.views} visualizações</small>
 					</div>
 				</div>
@@ -121,7 +127,9 @@ const Page = () => {
 					<textarea placeholder="Comente este poste"></textarea>
 					<button>comentar</button>
 					<div className="like-button">
-						<i className="fas fa-heart" title="curtir" style={{ color: blogItem.userLiked ? '#f00' : '#1b1b1b' }}></i>
+						<LikePost 
+							colorBt={blogItem.userLiked ? '#f00' : '#757575'} postId={id as string} 
+								setPostLikes={setPostLikes} postLikes={postLikes}/>
 					</div>
 				</div>
 
@@ -139,10 +147,10 @@ const Page = () => {
 						<div className="comment">{item.commentText}</div>
 
 						<div className="links">
-							<span>{item.likes} </span>
 							<Like title="Clique para gostar" 
-								color={item.liked ? '#f00' : '#757575'} 
-									commentId={item.id as string} postId={id as string}>
+								colorBt={item.liked ? '#f00' : '#757575'} 
+									commentId={item.id as string} postId={id as string} 
+										likes={item.likes as number}>
 										<i className="fas fa-heart"></i>
 							</Like>
 							<Link to="/edit-comment/12">editar</Link>

@@ -142,15 +142,6 @@ export const Container = styled.div`
 		align-items: flex-end;
 		margin-bottom: 40px;
 
-		.like-button {
-			i {
-				margin-left: 10px;
-				cursor: pointer;
-				font-size: 2rem;
-				color: #1b1b1b;
-			}
-		}
-
 		textarea {
 			flex: 1;
 			margin-right: 20px;
