@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as C from './styled';
 import { PageContainer } from '../../app.styled';
 import { NewListItem } from '../../types/NewListItem';
@@ -35,6 +35,8 @@ type BlogItemType = {
 const Page = () => {
 	const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
 	const [postLikes, setPostLikes] = useState(blogItem.likes);
+	const [comment, setComment] = useState('');
+	const navigate = useNavigate();
 	let { id } = useParams();
 
 	useEffect(() => {
@@ -55,6 +57,26 @@ const Page = () => {
 		}
 		getPostInfo();
 	}, []);
+
+	const handleCommentClick = async () => {
+		try {
+			let body = { commentText: comment };
+			let { data: json } = await api.put(`/blog/${id}/comment`, body);
+
+			if (json.data.status) {
+				 window.location.href = `/blog/${id}`;
+			} 
+		} catch (e) {
+			if (axios.isAxiosError(e)) {
+				let axiosError = e.response?.data.data.error;
+				if (axiosError === 'token é necessário' || axiosError === 'this token is not valid'
+					|| axiosError === 'Esse usuário não existe') {
+					navigate('/signin');
+					return;
+				}
+			}
+		}
+	}
 
 	return (
 		<PageContainer>
@@ -124,8 +146,9 @@ const Page = () => {
 			{/*Isto abaixo sera transformado num componente*/}
 
 				<div className="comments-area">
-					<textarea placeholder="Comente este poste"></textarea>
-					<button>comentar</button>
+					<textarea placeholder="Comente este poste" value={comment} 
+						onChange={e => setComment(e.target.value)}></textarea>
+					<button onClick={handleCommentClick}>comentar</button>
 					<div className="like-button">
 						<LikePost 
 							colorBt={blogItem.userLiked ? '#f00' : '#757575'} postId={id as string} 
@@ -153,7 +176,7 @@ const Page = () => {
 										likes={item.likes as number}>
 										<i className="fas fa-heart"></i>
 							</Like>
-							<Link to="/edit-comment/12">editar</Link>
+							<Link to={`/edit-comment/${item.id}`}>editar</Link>
 							<Link to="/delete-comment/12">eliminar</Link>
 							<small>{pastTime(new Date(item.dateCreated as Date))}</small>
 							{item.v && item.v > 0 ? <small>editado</small> : null}
