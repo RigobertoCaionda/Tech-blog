@@ -71,7 +71,7 @@ const Page =  () => {
 					</PrivateRoute>
 				}/>
 
-				<Route path="/edit-comment/:id" element={
+				<Route path="/edit-comment/:id/:idPost" element={
 					<PrivateRoute>
 						<EditComment />
 					</PrivateRoute>
