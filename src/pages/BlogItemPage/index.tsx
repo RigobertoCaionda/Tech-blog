@@ -42,6 +42,8 @@ const Page = () => {
 	const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
 	const [postLikes, setPostLikes] = useState(blogItem.likes);
 	const [comment, setComment] = useState('');
+	const [start, setStart] = useState(0);
+	const [end, setEnd] = useState(5);
 	const navigate = useNavigate();
 	let { id } = useParams();
 
@@ -87,6 +89,19 @@ const Page = () => {
 	const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>, link: string) => {
 		e.preventDefault();
 		window.location.href = link;
+	}
+	const handleMoreClick = () => {
+		if (end <= blogItem.commentsList.length) {
+			setStart(start + 5);
+			setEnd(end + 5);
+		}
+	}
+
+	const handleLessClick = () => {
+		if (end - 5 >= 0) {
+			setStart(start - 5);
+			setEnd(end - 5);
+		}
 	}
 
 	return (
@@ -178,7 +193,12 @@ const Page = () => {
 					<h2>Comentários</h2>
 
 					{blogItem.commentsList &&
-						blogItem.commentsList.map((item: ItemType, key) => (
+						end <= blogItem.commentsList.length &&
+						<div onClick={handleMoreClick} className="view-prev">Ver comentários mais antigos</div>
+					}
+
+					{blogItem.commentsList &&
+						blogItem.commentsList.slice(start, end).map((item: ItemType, key) => (
 						<div className="wrapper" key={key}>
 						<div className="person-info">
 							<div className="photo"><img src={item.image} alt="" /></div>
@@ -207,6 +227,10 @@ const Page = () => {
 						</div>
 					</div>
 							))
+					}
+
+					{blogItem.commentsList && end > 5 &&
+						<div onClick={handleLessClick} className="view-prev">Ver comentários mais recentes</div>
 					}
 
 				</div>

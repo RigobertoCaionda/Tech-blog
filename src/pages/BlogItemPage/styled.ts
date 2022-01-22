@@ -77,6 +77,12 @@ export const Container = styled.div`
 
 	.people-comments {
 
+		.view-prev {
+			color: blue;
+			cursor: pointer;
+			margin-bottom: 5px;
+		}
+
 		h2 {
 			margin-bottom: 20px;
 			font-weight: 400;
