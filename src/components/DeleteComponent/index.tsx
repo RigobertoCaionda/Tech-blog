@@ -60,7 +60,6 @@ const Page: React.FC<Props> = ({ data }) => {
 
 					case 'delete-comment':
 						return navigate(`/blog/${idPost}`);
-					break;
 				}
 			break;
 
@@ -76,7 +75,6 @@ const Page: React.FC<Props> = ({ data }) => {
 
 					case 'delete-comment':
 						return navigate(`/blog/${idPost}`);
-					break;
 				}
 			break;
 		}

@@ -7,7 +7,6 @@ import { NewListItem } from '../../types/NewListItem';
 import { doLogout } from '../../helpers/AuthHandler';
 
 const Page: React.FC = () => {
-	// eslint-disable-next-line
 	const [postList, setPostList] = useState<NewListItem[]>([
 			{
 				id: 0,
@@ -22,7 +21,8 @@ const Page: React.FC = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			},
 			{
 				id: 0,
@@ -37,7 +37,8 @@ const Page: React.FC = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			},
 			{
 				id: 0,
@@ -52,7 +53,8 @@ const Page: React.FC = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			},
 			{
 				id: 0,
@@ -67,7 +69,8 @@ const Page: React.FC = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			}
 		]);
 

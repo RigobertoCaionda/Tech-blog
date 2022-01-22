@@ -22,7 +22,8 @@ const Page = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			},
 			{
 				id: 0,
@@ -37,7 +38,8 @@ const Page = () => {
 				userLiked: false,
 				commentsList: [],
 				totalComments: 0,
-				userData: {}
+				userData: {},
+				prevNextArray: []
 			}
 		]);
 	return (

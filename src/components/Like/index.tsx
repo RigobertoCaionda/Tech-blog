@@ -28,7 +28,7 @@ const Page: React.FC<Props> = ({children, colorBt, commentId, postId, likes}) =>
 		
 		try {
 			let body = { commentId, option: btnColor === '#f00' ? false : true };
-			let {data: json} = await api.put(`/blog/${postId}/likeComment`, body);
+			await api.put(`/blog/${postId}/likeComment`, body);
 
 		} catch (e) {
 			if (axios.isAxiosError(e)) {

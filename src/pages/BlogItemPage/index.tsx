@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as C from './styled';
 import { PageContainer } from '../../app.styled';
@@ -30,6 +30,12 @@ type ItemType = {
 type BlogItemType = {
 	image: string;
 	name: string;
+};
+
+type PrevNextType = {
+	title: string;
+	dateCreated: Date;
+	_id: string;
 };
 
 const Page = () => {
@@ -76,6 +82,11 @@ const Page = () => {
 				}
 			}
 		}
+	}
+
+	const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>, link: string) => {
+		e.preventDefault();
+		window.location.href = link;
 	}
 
 	return (
@@ -133,15 +144,22 @@ const Page = () => {
 				<div className="prev-and-next">
 					<div className="prev"><ArrowBackIcon style={{ fontSize: '1.1rem' }} />Anterior</div>
 					<div className="next"><ArrowForwardIcon style={{ fontSize: '1.1rem' }} />Próximo</div>
-					<Link to="/blog/10">
-						<small>30 de abril de 2021</small>
-						<h3>Collapse em 5 minutos sem Javascript</h3>
-					</Link>
+					{blogItem.prevNextArray &&
+						<Link to={`/blog/${(blogItem.prevNextArray[1] as PrevNextType)._id}`}
+							onClick={(e) => handleLinkClick(e, `/blog/${(blogItem.prevNextArray[1] as PrevNextType)._id}`)}>
+								<small>{dateFormatter(new Date((blogItem.prevNextArray[1] as PrevNextType).dateCreated))}</small>
+								<h3>{(blogItem.prevNextArray[1] as PrevNextType).title}</h3>
+						</Link>
+					}
 
-					<Link to="/blog/11">
-						<small>30 de abril de 2021</small>
-						<h3>React, Angular ou Vue - Qual Framework Javascript escolheria hoje?</h3>
-					</Link>
+					{blogItem.prevNextArray &&
+						<Link to={`/blog/${(blogItem.prevNextArray[0] as PrevNextType)._id}`}
+							onClick={(e) => handleLinkClick(e, `/blog/${(blogItem.prevNextArray[0] as PrevNextType)._id}`)}>
+							<small>{dateFormatter(new Date((blogItem.prevNextArray[0] as PrevNextType).dateCreated))}</small>
+							<h3>{(blogItem.prevNextArray[0] as PrevNextType).title}</h3>
+						</Link>	
+					}
+					
 				</div>
 			{/*Isto abaixo sera transformado num componente*/}
 
@@ -183,7 +201,7 @@ const Page = () => {
 							{item.myComment &&
 								<Link to={`/delete-comment/${item.id}/${id}`}>eliminar</Link>
 							}
-							
+
 							<small>{pastTime(new Date(item.dateCreated as Date))}</small>
 							{item.v && item.v > 0 ? <small>editado</small> : null}
 						</div>

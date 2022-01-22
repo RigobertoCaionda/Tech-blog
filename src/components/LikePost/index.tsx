@@ -30,7 +30,7 @@ const Page: React.FC<Props> = ({ colorBt, postId, setPostLikes, postLikes }) => 
 		
 		try {
 			let body = { option: btnColor === '#f00' ? false : true };
-			let {data: json} = await api.put(`/blog/${postId}/like`, body);
+			await api.put(`/blog/${postId}/like`, body);
 
 		} catch (e) {
 			if (axios.isAxiosError(e)) {

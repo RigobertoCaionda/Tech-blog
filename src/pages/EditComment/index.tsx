@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { PageContainer, PageTitle } from '../../app.styled';
 import { Container } from './styled';
 import { useParams, useNavigate } from 'react-router-dom';
