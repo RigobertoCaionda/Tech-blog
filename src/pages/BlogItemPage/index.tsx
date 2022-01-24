@@ -190,7 +190,10 @@ const Page = () => {
 				</div>
 
 				<div className="people-comments">
-					<h2>Comentários</h2>
+					{blogItem.commentsList &&
+						blogItem.commentsList.length > 0 &&
+						<h2>Comentários</h2>
+					}
 
 					{blogItem.commentsList &&
 						end <= blogItem.commentsList.length &&

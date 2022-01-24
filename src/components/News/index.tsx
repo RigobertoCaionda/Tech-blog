@@ -7,11 +7,10 @@ type Props = {
 }
 
 const Page = ({ item, link }: Props) => {
-	
 	return (
 		<C.Container href={link}>
 			<div className="date-created">
-				<small>{dateFormatter(item.dateCreated)}</small>
+				<small>{dateFormatter(new Date(item.dateCreated))}</small>
 			</div>
 
 			<div className="title">

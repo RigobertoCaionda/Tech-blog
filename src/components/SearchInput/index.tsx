@@ -1,11 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from './styled';
 import SearchIcon from '@material-ui/icons/Search';
 
-const Page = () => {
+type Props = {
+	setQ: (search: string) => void;
+	setMostLiked: (mostLiked: boolean) => void;
+	setMostViewed: (mostViewed: boolean) => void;
+}
+
+let searchTimer: any = null;
+const Page: React.FC<Props> = ({ setQ, setMostViewed, setMostLiked }) => {
 	const [cb1, setCb1] = useState(false);
 	const [cb2, setCb2] = useState(false);
 	const [search, setSearch] = useState('');
+
+	useEffect(() => {
+		setQ(search);
+		setMostViewed(cb1);
+		setMostLiked(cb2);
+	}, [cb1, cb2]);
+
+	useEffect(() => {
+		clearTimeout(searchTimer);
+		searchTimer = setTimeout(() => {
+			setQ(search);
+		}, 2000);
+	}, [search]);
 
 	const handleInputChange1 = () => {
 		if (cb1 === false) {

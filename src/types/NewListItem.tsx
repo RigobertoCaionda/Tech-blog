@@ -13,4 +13,4 @@ export type NewListItem = {
 	totalComments: number;
 	userData: object;
 	prevNextArray: object[];
-}; 
+};
