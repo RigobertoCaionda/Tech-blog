@@ -5,6 +5,15 @@ export const Container = styled.div`
 
 	form {
 
+		.keep-logged {
+			display : flex;
+			align-items: center;
+
+			label {
+				margin-right: 5px;
+			}
+		}
+
 		.input-area.button {
 			align-items: flex-end;
 

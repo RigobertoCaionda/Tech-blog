@@ -109,7 +109,7 @@ const Page: React.FC = () => {
 
 						<div className="input-area">
 							<label>Email</label>
-							<input type="email" placeholder="exemplo: rigobertocaionda98@gmail.com" 
+							<input type="email" placeholder="exemplo@gmail.com" 
 								disabled={disabled} value={email} 
 									onChange={e => setEmail(e.target.value)} />
 						</div>
