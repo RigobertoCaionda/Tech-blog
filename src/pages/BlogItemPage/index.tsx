@@ -76,13 +76,14 @@ const Page = () => {
 			} = await api.put(`/blog/${id}/comment`, body); // o resultado com axios pega-se em data, dentro da data eu estou enviando data e dentro de data tem status, comment e image
 
 			if (status) {
+				setComment('');
 				newComment.myComment = true;
 				newComment.image = `http://localhost:3001/file/${image}`;
 				setBlogItem(state => ({
 					...state,
 					commentsList: [newComment, ...state.commentsList],
 					totalComments: state.totalComments + 1
-				})); // So para ter um rerender nos comentarios
+				})); // Vai provocar rerender nos comentarios
 			} 
 		} catch (e) {
 			if (axios.isAxiosError(e)) {

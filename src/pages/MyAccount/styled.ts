@@ -3,18 +3,33 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	padding-top: 40px;
 
-	.activate-account {
+	.pagination {
 		display: flex;
-		justify-content: flex-end;
-		margin-bottom: 20px;
-		a {
-			text-decoration: none;
-			font-style: italic;
-			font-weight: bold;
-			&: hover {
-				text-decoration: underline;
+		justify-content: space-between;
+
+		.current {
+			color: #757575;
+			font-size: 0.9rem;
+		}
+
+		.prev, .next {
+				color: #187888;
+				text-decoration: none;
+				font-size: 0.9rem;
+
+				&: hover {
+					border-bottom: 2px solid #187888;
 			}
 		}
+	}
+
+	.no-post-available {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 230px;
+		font-size: 1.4rem;
+		text-align: center;
 	}
 
 	.user-options {
@@ -69,11 +84,6 @@ export const Container = styled.div`
 					padding: 5px;
 					font-size: 0.9rem;
 				}
-			}
-
-			.activate-account {
-				margin-bottom: 10px;
-				margin-top: -20px;
 			}
 		}
 	}
