@@ -69,18 +69,32 @@ const Page = () => {
 	const handleCommentClick = async () => {
 		try {
 			let body = { commentText: comment };
-			let { data: json } = await api.put(`/blog/${id}/comment`, body);
+			let {
+				data: {
+					data: { status, comment: newComment, image }
+				}
+			} = await api.put(`/blog/${id}/comment`, body); // o resultado com axios pega-se em data, dentro da data eu estou enviando data e dentro de data tem status, comment e image
 
-			if (json.data.status) {
-				 window.location.href = `/blog/${id}`;
+			if (status) {
+				newComment.myComment = true;
+				newComment.image = `http://localhost:3001/file/${image}`;
+				setBlogItem(state => ({
+					...state,
+					commentsList: [newComment, ...state.commentsList],
+					totalComments: state.totalComments + 1
+				})); // So para ter um rerender nos comentarios
 			} 
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
 				let axiosError = e.response?.data.data.error;
-				if (axiosError === 'token é necessário' || axiosError === 'this token is not valid'
-					|| axiosError === 'Esse usuário não existe') {
-					navigate('/signin');
-					return;
+				switch(axiosError) {
+					case 'token é necessário':
+					case 'this token is not valid':
+					case 'Esse usuário não existe':
+						navigate('/signin');
+						break;
+					default:
+					console.log(axiosError);
 				}
 			}
 		}
@@ -139,7 +153,7 @@ const Page = () => {
 					<LinkIcon style={{ fontSize: '1rem' }}/>  
 					{blogItem.subject &&
 						blogItem.subject.map((item, key) => (
-								<Link to={`/query=${item}`} key={key}>
+								<Link to={`/subject=${item}`} key={key}>
 									{key === (blogItem.subject.length - 1) ? `${item} ` : `${item}, `}
 								</Link>
 							))

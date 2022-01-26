@@ -1,46 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from '../../app.styled';
 import * as D from './styled';
 import { Link } from 'react-router-dom';
 import NewsItem from '../../components/News';
 import ME_INFO from '../../components/Me.Info';
 import { NewListItem } from '../../types/NewListItem';
+import api from '../../api';
+import axios from 'axios';
 
 const Page = () => {
-	const [lastNews, setLastNews] = useState<NewListItem[]>([
-			{
-				id: 0,
-				title: '',
-				dateCreated: new Date(),
-				subject: [],
-				text: [],
-				desc: '',
-				views: 0,
-				likes: 0,
-				likedByUsers: [],
-				userLiked: false,
-				commentsList: [],
-				totalComments: 0,
-				userData: {},
-				prevNextArray: []
-			},
-			{
-				id: 0,
-				title: '',
-				dateCreated: new Date(),
-				subject: [],
-				text: [],
-				desc: '',
-				views: 0,
-				likes: 0,
-				likedByUsers: [],
-				userLiked: false,
-				commentsList: [],
-				totalComments: 0,
-				userData: {},
-				prevNextArray: []
+	const [lastNews, setLastNews] = useState<NewListItem[]>([]);
+
+	useEffect(() => {
+		const getLastPosts = async () => {
+			try {
+				const {
+					data: {
+						data: { postData }
+					}
+				} = await api.get(`/blog?limit=2&sort=desc`);
+				setLastNews(postData);
+			} catch(e) {
+				if (axios.isAxiosError(e)) {
+					console.log(e.response?.data.data.error);
+				}
 			}
-		]);
+		}
+		getLastPosts();
+	}, []);
 	return (
 			<C.PageContainer>
 				<D.Container>
@@ -52,7 +39,7 @@ const Page = () => {
 						<div className="last-updates-area">
 							{lastNews.length > 0 &&
 								lastNews.map((i,k)=>(
-										<NewsItem key={k} item={i} link={`/blog/${i.id}`} />
+										<NewsItem key={k} item={i} link={`/blog/${(i as any)._id}`} />
 									))
 							}
 						</div>
