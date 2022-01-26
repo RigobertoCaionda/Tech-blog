@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import { PageContainer } from '../../app.styled';
 import * as C from './styled';
 import ME_INFO from '../../components/Me.Info';
 const Page = () => {
+
+	useEffect(() => {
+		document.title = 'Tech Blog | Sobre';
+	}, []);
+
 	return (
 			<PageContainer>
 				<C.Container>

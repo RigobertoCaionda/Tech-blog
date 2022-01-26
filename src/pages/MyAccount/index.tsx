@@ -14,6 +14,7 @@ const Page: React.FC = () => {
 	const navigate = useNavigate();
 	const [postList, setPostList] = useState<NewListItem[]>([]);
 	const [postsTotal, setPostsTotal] = useState(0);
+	const [idUser, setIdUser] = useState('');
 	const [pageCount, setPageCount] = useState(0);
 	const [currentPage, setCurrentPage] = useState(1);
 	let queryString: string[] = [];
@@ -23,11 +24,12 @@ const Page: React.FC = () => {
 			try {
 				const {
 				data: {
-					data: { postData, total }
+					data: { postData, total, idUser: id }
 				}
 			} = await api.get(`/user/posts?${queryString.join('&')}`);
 			setPostList(postData);
 			setPostsTotal(total);
+			setIdUser(id);
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
 				let axiosError = e.response?.data.data.error;
@@ -43,6 +45,10 @@ const Page: React.FC = () => {
 			}
 		}
 		}
+
+	useEffect(() => {
+		document.title = 'Tech Blog | Minha Conta';
+	}, []);
 
 	useEffect(() => {
 			queryString.push('limit=4');
@@ -109,8 +115,8 @@ const Page: React.FC = () => {
 					}
 
 					<div className="user-options">
-						<Link to="/edit-profile/12">Editar Perfil</Link>
-						<Link to="/delete-account/12">Eliminar conta</Link>
+						<Link to={`/edit-profile/${idUser}`}>Editar Perfil</Link>
+						<Link to={`/delete-account/${idUser}`}>Eliminar conta</Link>
 						<button onClick={handleLogout}>sair da conta</button>
 					</div>
 				</C.Container>

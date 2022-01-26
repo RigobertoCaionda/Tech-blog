@@ -3,6 +3,7 @@ import { Container, Card } from './styled';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../api';
 import axios from 'axios';
+import { doLogout } from '../../helpers/AuthHandler';
 
 type Props = {
 	data: {
@@ -21,16 +22,30 @@ const Page: React.FC<Props> = ({ data }) => {
 			case 'yes':
 				switch(data.key) {
 					case 'delete-account':
-						alert('quer apagar a conta');
-					break;
-
-					case 'activate-account':
-						alert('quer ativar a conta');
+						try {
+							let { 
+								data: {
+									data: { status }
+								}                                       
+								 } = await api.delete('/user/deleteProfile');
+							if (status) {
+								doLogout();
+								return navigate('/signin');
+							}
+						} catch (e) {
+							if (axios.isAxiosError(e)) {
+							let axiosError = e.response?.data.data.error;
+							if (axiosError === 'token é necessário' || axiosError === 'this token is not valid'
+								|| axiosError === 'Esse usuário não existe') {
+								return navigate('/signin');
+							}
+						}
+						}
 					break;
 
 					case 'delete-comment':
 						try {
-							let config = { data: { commentId: id } };
+							let config = { data: { commentId: id } }; // Envia-se em data
 							let { data: json } = await api.delete(`/blog/${idPost}/comment`, config);
 							if (json.data.status) {
 								return navigate(`/blog/${idPost}`);
@@ -51,11 +66,7 @@ const Page: React.FC<Props> = ({ data }) => {
 			case 'no':
 				switch(data.key) {
 					case 'delete-account':
-						alert('nao quer apagar a conta');
-					break;
-
-					case 'activate-account':
-						alert('nao quer ativar a conta');
+						return navigate('/my-account?limit=4&offset=0&sort=desc');
 					break;
 
 					case 'delete-comment':
@@ -66,11 +77,7 @@ const Page: React.FC<Props> = ({ data }) => {
 			case 'cancel':
 				switch(data.key) {
 					case 'delete-account':
-						alert('cancelou na eliminacao da conta');
-					break;
-
-					case 'activate-account':
-						alert('cancelou na ativacao da conta');
+						return navigate('/my-account?limit=4&offset=0&sort=desc');
 					break;
 
 					case 'delete-comment':

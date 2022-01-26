@@ -1,4 +1,4 @@
-import { FormEvent, useState, useRef } from 'react';
+import { FormEvent, useState, useRef, useEffect } from 'react';
 import * as C from './styled';
 import { PageContainer, PageTitle, ErrorMessage } from '../../app.styled';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,10 @@ const Page = () => {
 	const inputValuesP = useRef<string[]>([]);
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState('');
+
+	useEffect(() => {
+		document.title = 'Tech Blog | Novo';
+	}, []);
 
 	const handleClick = () => {
 		setSubjectList(state => [...state, '']);

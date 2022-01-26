@@ -35,7 +35,9 @@ const Page = () => {
 					<ME_INFO data={{title: 'Olá', paragraphs: ['Sou Desenvolvedor Full stack, com bacharelato concluído em engenharia informática. Sou uma pessoa completamente apaixonada por tecnologia, principalmente pela área de programação de software.', 
 					'Sou uma pessoa super curiosa e estou sempre disposto a aprender coisas novas.']}} />
 					<div className="last-updates">
-						<h3>Últimas do blog</h3>
+						{lastNews.length > 0 &&
+							<h3>Últimas do blog</h3>
+						}
 						<div className="last-updates-area">
 							{lastNews.length > 0 &&
 								lastNews.map((i,k)=>(

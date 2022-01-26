@@ -154,7 +154,7 @@ const Page = () => {
 					<LinkIcon style={{ fontSize: '1rem' }}/>  
 					{blogItem.subject &&
 						blogItem.subject.map((item, key) => (
-								<Link to={`/subject=${item}`} key={key}>
+								<Link to={`/subjects?subject=${item}`} key={key}>
 									{key === (blogItem.subject.length - 1) ? `${item} ` : `${item}, `}
 								</Link>
 							))
@@ -217,7 +217,7 @@ const Page = () => {
 
 					{blogItem.commentsList &&
 						blogItem.commentsList.slice(start, end).map((item: ItemType, key) => (
-						<div className="wrapper" key={key}>
+						<div className="wrapper" key={item.id}>
 						<div className="person-info">
 							<div className="photo"><img src={item.image} alt="" /></div>
 								 <span style={{ color: item.myComment ? '#f00' : '#000' }}>{item.name}</span>

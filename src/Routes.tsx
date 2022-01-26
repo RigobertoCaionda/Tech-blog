@@ -21,7 +21,8 @@ const Page =  () => {
 				<Route path="/" element={ <Home /> }/>	
 				<Route path="/blog" element={ <Blog /> }/>
 				<Route path="/blog/:id" element={ <BlogItemPage /> } />
-				<Route path="/about" element={ <Hi /> }/>	
+				<Route path="/about" element={ <Hi /> }/>
+				<Route path="/subjects/?subject=programacao" element={ <Home /> }/>	
 				<Route path="/signin" element={ <SignIn /> }/>
 				<Route path="/signup" element={ <SignUp /> }/>
 				<Route path="/view-in-english" element={ <ViewInEnglish /> }/>
@@ -51,17 +52,6 @@ const Page =  () => {
 				<Route path="/edit-profile/:id" element={
 					<PrivateRoute>
 						<EditProfile />
-					</PrivateRoute>
-				}/>
-
-				<Route path="/activate-account/:id" element={
-					<PrivateRoute>
-						<DeleteComponent data={{ 
-							key: 'activate-account',
-							title: 'Reativação da conta',
-							paragraphs: ['Você realmente deseja reativar esta conta?', 
-								'Se clicar em sim, a sua conta será reativada.']
-						}} />
 					</PrivateRoute>
 				}/>
 

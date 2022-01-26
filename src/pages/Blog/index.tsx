@@ -55,6 +55,10 @@ const Page = () => {
 			getAllPosts();
 		}, [q, currentPage, mostLiked, mostViewed]);
 
+	useEffect(() => {
+		document.title = 'Tech Blog | Blog';
+	}, []);
+
 	useEffect(()=>{
 		if (newsList.length > 0){
 			setPageCount(Math.ceil(postsTotal / newsList.length));
