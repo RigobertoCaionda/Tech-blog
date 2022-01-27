@@ -1,6 +1,6 @@
 import { FormEvent, useState, useRef, useEffect } from 'react';
 import * as C from './styled';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { PageContainer, PageTitle, ErrorMessage } from '../../app.styled';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -57,8 +57,8 @@ const Page = () => {
 
 	const handleRemoveClickS = () => {
 		if (subjectList.length > 0) {
-			let newSubjectList = subjectList.filter((item, key) => (key + 1) !== subjectList.length ? true : false);
-
+			let newSubjectList = subjectList
+			.filter((item, key) => (key + 1) !== subjectList.length ? true : false)
 			setSubjectList(newSubjectList);
 			inputValuesS.current.pop();
 		}
@@ -66,14 +66,15 @@ const Page = () => {
 
 	const handleRemoveClickP = () => {
 		if (texts.length > 0) {
-			let newTextList = texts.filter((item, key) => (key + 1) !== texts.length ? true : false);
+			let newTextList = texts
+			.filter((item, key) => (key + 1) !== texts.length ? true : false);
 
 			setTexts(newTextList);
 			inputValuesP.current.pop();
 		}
 	}
 
-	const handleButtonClick =  async (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
+	const handleButtonClick =  async (e: FormEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		setError('');
 		setDisabled(true);
@@ -109,6 +110,9 @@ const Page = () => {
 			<PageContainer>
 				<C.Container>
 					<PageTitle>Editar conteúdo</PageTitle>
+						<div className="delete-post">
+							<Link to={`/delete-post/${id}`}>apagar post</Link>
+						</div>
 					{error !== '' &&
 							<ErrorMessage>{error}</ErrorMessage>
 						}

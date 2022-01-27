@@ -43,6 +43,30 @@ const Page: React.FC<Props> = ({ data }) => {
 						}
 					break;
 
+					case 'delete-post':
+							try {
+							let { 
+								data: {
+									data: { status }
+								}                                       
+								 } = await api.delete(`/blog/${id}`);
+							if (status) {
+								return navigate(`/my-account?limit=4&offset=0&sort=desc`);
+							}
+						} catch (e) {
+							if (axios.isAxiosError(e)) {
+							let axiosError = e.response?.data.data.error;
+							if (
+								axiosError === 'token é necessário' || 
+								axiosError === 'this token is not valid' || 
+								axiosError === 'Esse usuário não existe'
+								) {
+								return navigate('/signin');
+							}
+						}
+						}
+					break;
+
 					case 'delete-comment':
 						try {
 							let config = { data: { commentId: id } }; // Envia-se em data
@@ -67,7 +91,9 @@ const Page: React.FC<Props> = ({ data }) => {
 				switch(data.key) {
 					case 'delete-account':
 						return navigate('/my-account?limit=4&offset=0&sort=desc');
-					break;
+
+					case 'delete-post':
+					return navigate(`/my-account?limit=4&offset=0&sort=desc`);
 
 					case 'delete-comment':
 						return navigate(`/blog/${idPost}`);
@@ -78,7 +104,9 @@ const Page: React.FC<Props> = ({ data }) => {
 				switch(data.key) {
 					case 'delete-account':
 						return navigate('/my-account?limit=4&offset=0&sort=desc');
-					break;
+
+						case 'delete-post':
+						return navigate(`/my-account?limit=4&offset=0&sort=desc`);
 
 					case 'delete-comment':
 						return navigate(`/blog/${idPost}`);

@@ -43,3 +43,22 @@ export const ErrorMessage = styled.div`
 		}
 	}
 `;
+
+export const SuccessMessage = styled.div`
+	margin:10px 0;
+	background-color:green;
+	color:#fff;
+	border:2px solid #757575;
+	padding:10px;
+	width: 720px;
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		width: 100%;
+	}
+
+	@media (max-width: 600px) {
+		& {
+			width: 100%;
+		}
+	}
+`;

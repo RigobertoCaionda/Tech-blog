@@ -2,6 +2,25 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	padding: 50px 0;
+
+	.delete-post {
+		display: flex;
+		justify-content: flex-end;
+		a {
+			padding: 5px 10px;
+			border: 1px solid #1b1b1b;
+			background-color: #1b1b1b;
+			text-decoration: none;
+			color: #f1f1f1;
+			border-radius: 5px;
+			cursor: pointer;
+			&: hover {
+				background-color: transparent;
+				color: #1b1b1b;
+			}
+		}
+	}
+
 	form {
 
 		.input-area.button {

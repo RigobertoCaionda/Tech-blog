@@ -11,6 +11,7 @@ import EditMyBlogItem from './pages/EditMyBlogItem';
 import DeleteComponent from './components/DeleteComponent';
 import EditProfile from './pages/EditProfile';
 import EditComment from './pages/EditComment';
+import ChangePassword from './pages/ChangePassword';
 import ViewInEnglish from './pages/ViewInEnglish';
 import SubjectSearch from './pages/SubjectSearch';
 import NotFound from './pages/NotFound';
@@ -61,10 +62,27 @@ const Page =  () => {
 						<EditMyBlogItem />
 					</PrivateRoute>
 				}/>
-
+				
 				<Route path="/edit-comment/:id/:idPost" element={
 					<PrivateRoute>
 						<EditComment />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/change-password" element={
+					<PrivateRoute>
+						<ChangePassword />
+					</PrivateRoute>
+				}/>
+
+				<Route path="/delete-post/:id" element={
+					<PrivateRoute>
+						<DeleteComponent data={{ 
+							key: 'delete-post',
+							title: 'Eliminar post',
+							paragraphs: ['Você realmente deseja eliminar este post?', 
+								'Se clicar em sim, este post será apagado para sempre.']
+						}} />
 					</PrivateRoute>
 				}/>
 

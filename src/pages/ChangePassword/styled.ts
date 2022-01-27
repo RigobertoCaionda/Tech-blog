@@ -15,22 +15,6 @@ export const Container = styled.div`
 			}
 		}
 
-		.input-area.profile-pic {
-			align-items: center;
-
-			img {
-				width: 180px;
-				height: 180px;
-				border-radius: 50%;
-				object-fit: cover;
-				cursor: pointer;
-			}
-
-			input {
-				display: none;
-			}
-		}
-
 		.input-area.button {
 			align-items: flex-end;
 
@@ -60,7 +44,7 @@ export const Container = styled.div`
 				color: #757575;
 			}
 
-			input, select {
+			input {
 				width: 100%;
 				padding: 10px;
 				border-radius: 5px;
@@ -76,15 +60,6 @@ export const Container = styled.div`
 			padding-top: 20px;
 			width: 90%;
 			margin: auto;
-
-			form {
-				.input-area.profile-pic {
-					img {
-						width: 150px;
-						height: 150px;
-					}
-				}
-			}
 		}
 	}
 `;
