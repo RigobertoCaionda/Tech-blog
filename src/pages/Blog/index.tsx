@@ -10,7 +10,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import api from '../../api';
 import axios from 'axios'; 
 
-const Page = () => {
+const Page: React.FC = () => {
 
 	const navigate = useNavigate();
 	const [newsList, setNewsList] = useState<NewsListType[]>([]);

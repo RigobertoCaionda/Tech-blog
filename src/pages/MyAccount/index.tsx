@@ -14,6 +14,8 @@ const Page: React.FC = () => {
 	const navigate = useNavigate();
 	const [postList, setPostList] = useState<NewListItem[]>([]);
 	const [postsTotal, setPostsTotal] = useState(0);
+	const [name, setName] = useState('');
+	const [image, setImage] = useState('');
 	const [idUser, setIdUser] = useState('');
 	const [pageCount, setPageCount] = useState(0);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -46,8 +48,33 @@ const Page: React.FC = () => {
 		}
 		}
 
+		const getUserInfo = async () => {
+		try {
+				let { 
+					data: { data } 
+				} = await api.get('/user/me');
+				setName(data.name);
+				setImage(data.image);
+			}
+			catch (e) {		 
+				if (axios.isAxiosError(e)) {
+				let axiosError = e.response?.data.data.error;
+				switch(axiosError) {
+					case 'token é necessário':
+					case 'this token is not valid':
+					case 'Esse usuário não existe':
+						navigate('/signin');
+						break;
+					default:
+					console.log(axiosError);
+				}
+			}
+			}
+		}
+
 	useEffect(() => {
 		document.title = 'Tech Blog | Minha Conta';
+		getUserInfo();
 	}, []);
 
 	useEffect(() => {
@@ -59,7 +86,7 @@ const Page: React.FC = () => {
 			getUserPosts();
 		}, [currentPage]);
 
-	useEffect(()=>{
+	useEffect(()=> {
 		if (postList.length > 0){
 			setPageCount(Math.ceil(postsTotal / postList.length));
 		} else {
@@ -87,6 +114,10 @@ const Page: React.FC = () => {
 	return (
 			<PageContainer>
 				<C.Container>
+					<div className="userData">
+						<span>{name}</span>
+						<img src={`http://localhost:3001/file/${image}`} />
+					</div>
 					<PageTitle>Minhas postagens</PageTitle>
 
 					{postList.length === 0 &&

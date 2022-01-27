@@ -3,6 +3,24 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	padding-top: 40px;
 
+	.userData {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 10px;
+
+		span {
+			font-size: 1.5rem;
+			margin-bottom: 5px;
+		}
+
+		img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+		}
+	}
+
 	.pagination {
 		display: flex;
 		justify-content: space-between;
