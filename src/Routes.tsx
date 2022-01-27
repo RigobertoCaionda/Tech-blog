@@ -12,6 +12,7 @@ import DeleteComponent from './components/DeleteComponent';
 import EditProfile from './pages/EditProfile';
 import EditComment from './pages/EditComment';
 import ViewInEnglish from './pages/ViewInEnglish';
+import SubjectSearch from './pages/SubjectSearch';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -22,7 +23,7 @@ const Page =  () => {
 				<Route path="/blog" element={ <Blog /> }/>
 				<Route path="/blog/:id" element={ <BlogItemPage /> } />
 				<Route path="/about" element={ <Hi /> }/>
-				<Route path="/subjects/?subject=programacao" element={ <Home /> }/>	
+				<Route path="/subjects" element={ <SubjectSearch /> }/>	
 				<Route path="/signin" element={ <SignIn /> }/>
 				<Route path="/signup" element={ <SignUp /> }/>
 				<Route path="/view-in-english" element={ <ViewInEnglish /> }/>
