@@ -1,10 +1,22 @@
-import { FormEvent, useState, useRef } from 'react';
+import { FormEvent, useState, useRef, useEffect } from 'react';
 import * as C from './styled';
-import { PageContainer, PageTitle } from '../../app.styled';
+import { useParams, useNavigate } from 'react-router-dom';
+import { PageContainer, PageTitle, ErrorMessage } from '../../app.styled';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
+import api from '../../api';
+import axios from 'axios';
 
+type EditType = {
+	title: string;
+	desc: string;
+	subject: string[];
+	text: string[];
+};
 const Page = () => {
+
+	const navigate = useNavigate();
+	const { id } = useParams();
 	const [subjectList, setSubjectList] = useState<string[]>([]);
 	const [texts, setTexts] = useState<string[]>([]);
 	const [title, setTitle] = useState('');
@@ -12,6 +24,25 @@ const Page = () => {
 	const inputValuesS = useRef<string[]>([]);
 	const inputValuesP = useRef<string[]>([]);
 	const [disabled, setDisabled] = useState(false);
+	const [error, setError] = useState('');
+
+	useEffect(() => {
+		document.title = 'Tech Blog | Minha Conta | Editar post';
+
+		const getPostInfo = async () => {
+		try {
+				let {data: json} = await api.get(`/blog/${id}`);
+				setTitle(json.data.title);
+				setDesc(json.data.desc);
+			}
+			catch (e) {		 
+				if (axios.isAxiosError(e)) {
+				console.log(e.response?.data.data.error);
+			}
+			}
+		}
+		getPostInfo();
+	}, []);
 
 	const handleClick = () => {
 		setSubjectList(state => [...state, '']);
@@ -26,8 +57,7 @@ const Page = () => {
 
 	const handleRemoveClickS = () => {
 		if (subjectList.length > 0) {
-			let newSubjectList = subjectList.
-			filter((item, key) => (key + 1) !== subjectList.length ? true : false);
+			let newSubjectList = subjectList.filter((item, key) => (key + 1) !== subjectList.length ? true : false);
 
 			setSubjectList(newSubjectList);
 			inputValuesS.current.pop();
@@ -36,31 +66,52 @@ const Page = () => {
 
 	const handleRemoveClickP = () => {
 		if (texts.length > 0) {
-			let newTextList = texts.
-			filter((item, key) => (key + 1) !== texts.length ? true : false);
+			let newTextList = texts.filter((item, key) => (key + 1) !== texts.length ? true : false);
 
 			setTexts(newTextList);
 			inputValuesP.current.pop();
 		}
 	}
 
-	const handleButtonClick = (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
+	const handleButtonClick =  async (e: FormEvent<HTMLButtonElement>) => {//HTMLButtonElement pq e onClick no botao e nao onSubmit
 		e.preventDefault();
+		setError('');
 		setDisabled(true);
-		let data = {
-			title,
-			subjects: inputValuesS.current,
-			texts: inputValuesP.current,
-			desc
+		try {
+			let body = {} as EditType;
+			if (title && title.trim() !== '') { body.title = title };
+			if (desc && desc.trim() !== '') { body.desc = desc };
+			if (inputValuesS.current.length > 0) { body.subject = inputValuesS.current };
+			if (inputValuesP.current.length > 0) { body.text = inputValuesP.current };
+			
+			let {data: json} = await api.put(`/blog/${id}`, body);
+			if (json.data.status) {
+				return navigate(`/my-account?limit=4&offset=0&sort=desc`);
+			} 
+		} catch(e) {
+			if (axios.isAxiosError(e)) {
+				let axiosError = e.response?.data.data.error;
+				switch(axiosError) {
+					case 'token é necessário':
+					case 'this token is not valid':
+					case 'Esse usuário não existe':
+						navigate('/signin');
+						break;
+					default:
+					setError(axiosError);
+				}
+			}
 		}
-
-		console.log(data);
+		setDisabled(false);	
 	}
 	
 	return (
 			<PageContainer>
 				<C.Container>
 					<PageTitle>Editar conteúdo</PageTitle>
+					{error !== '' &&
+							<ErrorMessage>{error}</ErrorMessage>
+						}
 					<form method="POST">
 						<div className="input-area">
 							<label>Título</label>
