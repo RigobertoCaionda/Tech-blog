@@ -15,7 +15,7 @@ export const Container = styled.div`
 		color: #1b1b1b;
 		font-weight: 400;
 		font-size: 1.1rem;
-		text-align: justify;
+		text-align: center;
 	}
 
 	@media (max-width: 600px) {

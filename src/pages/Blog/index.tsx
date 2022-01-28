@@ -20,12 +20,14 @@ const Page: React.FC = () => {
 	const [q, setQ] = useState('');
 	const [mostLiked, setMostLiked] = useState(false)
 	const [mostViewed, setMostViewed] = useState(false);
+	const [loading, setLoading] = useState(true);
 	let queryString: string[] = [];
 	let offset = (currentPage - 1) * 5;
 
 		const getAllPosts = async () => {
 			try {
 				let {data: json} = await api.get(`/blog?${queryString.join('&')}`);
+				setLoading(false);
 				setNewsList(json.data.postData);
 				setPostsTotal(json.data.total);
 			}
@@ -85,7 +87,7 @@ const Page: React.FC = () => {
 					<SearchInput setQ={setQ} setMostLiked={setMostLiked} 
 						setMostViewed={setMostViewed} />
 					{newsList &&
-						newsList.length === 0 &&
+						newsList.length === 0 && !loading &&
 						<div className="no-post">Nenhum post disponível</div>
 					}
 

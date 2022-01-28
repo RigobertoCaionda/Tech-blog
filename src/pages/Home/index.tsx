@@ -8,7 +8,7 @@ import { NewListItem } from '../../types/NewListItem';
 import api from '../../api';
 import axios from 'axios';
 
-const Page = () => {
+const Page: React.FC = () => {
 	const [lastNews, setLastNews] = useState<NewListItem[]>([]);
 
 	useEffect(() => {

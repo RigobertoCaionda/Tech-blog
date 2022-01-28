@@ -5,17 +5,19 @@ export const Container = styled.div`
 
 	.userData {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		margin-bottom: 20px;
 		font-style: italic;
 
 		span {
 			margin: 0 5px;
+			font-size: 1.3rem;
 		}
 
 		img {
-			width: 40px;
-			height: 40px;
+			width: 150px;
+			height: 150px;
 			border-radius: 50%;
 		}
 	}
@@ -60,9 +62,13 @@ export const Container = styled.div`
 		align-items: center;
 		margin-bottom: 30px;
 
+		small {
+			font-size: 1.1rem;
+		}
+
 		.views-and-likes {
 			small {
-				font-size: 0.8rem;
+				font-size: 1rem;
 				margin-right: 50px;
 			}
 			small: last-child {

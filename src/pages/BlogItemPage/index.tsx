@@ -127,7 +127,7 @@ const Page = () => {
 				</div>
 
 				<div className="userData">
-					De <span>{blogItem.userData ? (blogItem.userData as BlogItemType).name : ''}</span>
+					<span>De {blogItem.userData ? (blogItem.userData as BlogItemType).name : ''}</span>
 						<img src={blogItem.userData ? (blogItem.userData as BlogItemType).image : '' } alt="" />
 				</div>
 
@@ -137,7 +137,7 @@ const Page = () => {
 							{timeFormatter(new Date(blogItem.dateCreated))}</small>
 					}
 					<div className="views-and-likes">
-						<small>{postLikes} curtidas</small>
+						<small>{postLikes} curtida(s)</small>
 						<small>{blogItem.views} visualizações</small>
 					</div>
 				</div>

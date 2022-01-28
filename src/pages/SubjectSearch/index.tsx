@@ -13,6 +13,7 @@ const Page: React.FC = () => {
 	const navigate = useNavigate();
 	const [newsList, setNewsList] = useState<NewsListType[]>([]);
 	const [postsTotal, setPostsTotal] = useState(0);
+	const [loading, setLoading] = useState(true);
 	const [pageCount, setPageCount] = useState(0);
 	const [currentPage, setCurrentPage] = useState(1);
 	let queryString: string[] = [];
@@ -31,6 +32,7 @@ const Page: React.FC = () => {
 						data: { postData, total } 
 					} 
 				} = await api.get(`/blog/search?subject=${query.get('subject')}&${queryString.join('&')}`);
+				setLoading(false);
 				setNewsList(postData);
 				setPostsTotal(total);
 			}
@@ -73,9 +75,9 @@ const Page: React.FC = () => {
 	return (
 			<PageContainer>
 				<C.Container>
-					<PageTitle>Procurar por assunto</PageTitle>
+					<PageTitle>Assunto: {query.get('subject')}</PageTitle>
 
-					{newsList.length === 0 &&
+					{newsList.length === 0 && !loading &&
 						<div className="no-post-available">Nenhum resultado encontrado</div>
 					}
 
