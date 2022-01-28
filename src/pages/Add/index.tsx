@@ -100,7 +100,7 @@ const Page = () => {
 							<div className="wrapper first-wrapper">
 								<input type="text" placeholder="clique no + para adicionar um assunto" 
 								onChange={e => {
-									inputValuesS.current[0] = e.target.value;
+									inputValuesS.current[0] = e.target.value.toLowerCase();
 								}} disabled={disabled} />
 								<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
 									onClick={handleClick} />
@@ -116,7 +116,7 @@ const Page = () => {
 									<input type="text" 
 										placeholder="ex: typescript."  
 										onChange={e => {
-											inputValuesS.current[key+1] = e.target.value;
+											inputValuesS.current[key+1] = e.target.value.toLowerCase();
 										}} disabled={disabled} />
 									<AddIcon style={{ color: '#757575', cursor: 'pointer' }} 
 										onClick={handleClick} />
