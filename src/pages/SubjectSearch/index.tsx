@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { PageContainer, PageTitle } from '../../app.styled';
 import { NewsListType } from '../../types/NewsListType';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -10,7 +10,7 @@ import api from '../../api';
 import axios from 'axios'; 
 
 const Page: React.FC = () => {
-	const navigate = useNavigate();
+	
 	const [newsList, setNewsList] = useState<NewsListType[]>([]);
 	const [postsTotal, setPostsTotal] = useState(0);
 	const [loading, setLoading] = useState(true);

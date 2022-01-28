@@ -116,7 +116,7 @@ const Page: React.FC = () => {
 				<C.Container>
 					<div className="userData">
 						<span>{name}</span>
-						<img src={`http://localhost:3001/file/${image}`} />
+						<img src={`http://localhost:3001/file/${image}`} alt=""/>
 					</div>
 					<PageTitle>Minhas postagens</PageTitle>
 
