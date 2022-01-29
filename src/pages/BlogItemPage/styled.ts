@@ -101,7 +101,8 @@ export const Container = styled.div`
 			padding-bottom: 5px;
 		}
 		.links {
-
+			display: flex;
+			align-items: center;
 			small {
 				color: #757575;
 				margin-right: 10px;

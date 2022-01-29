@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import * as C from "./styled";
 import { PageContainer } from "../../app.styled";
 import { NewListItem } from "../../types/NewListItem";
+import Icon from "../../components/SvgIcon";
 import {
   dateFormatter,
   timeFormatter,
@@ -46,6 +47,7 @@ const Page = () => {
   const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
   const [postLikes, setPostLikes] = useState(blogItem.likes);
   const [comment, setComment] = useState("");
+  const [likeCount, setLikeCount] = useState(0);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(5);
   const navigate = useNavigate();
@@ -277,7 +279,9 @@ const Page = () => {
                       postId={id as string}
                       likes={item.likes as number}
                     >
-                      <i className="fas fa-heart"></i>
+                      <div style={{ width: 20, height: 20 }}>
+                        <Icon isLiked={item.liked as boolean} />
+                      </div>
                     </Like>
                     {item.myComment && (
                       <Link to={`/edit-comment/${item.id}/${id}`}>editar</Link>
