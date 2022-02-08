@@ -10,6 +10,7 @@ type Props = {
   commentId: string;
   likes: number;
   postId: string;
+  cb: () => void;
 };
 
 const Page: React.FC<Props> = ({
@@ -17,13 +18,15 @@ const Page: React.FC<Props> = ({
   colorBt,
   commentId,
   postId,
-  likes
+  likes,
+  cb
 }) => {
   const [btnColor, setBtnColor] = useState(colorBt);
   const [likeCount, setLikeCount] = useState(likes);
   const navigate = useNavigate();
 
   const handleLikeClick = async () => {
+    cb();
     if (btnColor === "#f00") {
       setBtnColor("#757575");
       setLikeCount(likeCount - 1);
@@ -51,7 +54,7 @@ const Page: React.FC<Props> = ({
   };
 
   return (
-    <C.Like color={btnColor} onClick={handleLikeClick}>
+    <C.Like onClick={handleLikeClick}>
       <span>{likeCount} </span> {children}
     </C.Like>
   );

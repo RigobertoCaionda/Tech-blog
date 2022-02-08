@@ -47,7 +47,6 @@ const Page = () => {
   const [blogItem, setBlogItem] = useState<NewListItem>({} as NewListItem);
   const [postLikes, setPostLikes] = useState(blogItem.likes);
   const [comment, setComment] = useState("");
-  const [likeCount, setLikeCount] = useState(0);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(5);
   const navigate = useNavigate();
@@ -278,9 +277,13 @@ const Page = () => {
                       commentId={item.id as string}
                       postId={id as string}
                       likes={item.likes as number}
+                      cb={() => {
+                        item.liked = !item.liked;
+                        setBlogItem(state => ({ ...state }));
+                      }}
                     >
                       <div style={{ width: 20, height: 20 }}>
-                        <Icon isLiked={item.liked as boolean} />
+                        <Icon isLiked={item.liked ?? false} />
                       </div>
                     </Like>
                     {item.myComment && (
